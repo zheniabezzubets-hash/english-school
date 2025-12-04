@@ -1,0 +1,2754 @@
+<!DOCTYPE html>
+
+<html lang="uk">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Школа англійської мови</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+    <style>
+
+        :root {
+
+            --bg: #0f172a;
+
+            --bg-alt: #111827;
+
+            --bg-deep: #020617;
+
+            --border: #1f2937;
+
+            --text: #e5e7eb;
+
+            --muted: #9ca3af;
+
+            --accent: #3b82f6;
+
+        }
+
+
+
+        * { box-sizing: border-box; }
+
+
+
+        body {
+
+            margin: 0;
+
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+            background: var(--bg);
+
+            color: var(--text);
+
+        }
+
+
+
+        html, body { overflow-x: hidden; }
+
+
+
+        .app {
+
+            min-height: 100vh;
+
+            max-width: 100%;
+
+            overflow-x: hidden;
+
+            padding-top: 56px;
+
+        }
+
+
+
+        header {
+
+            padding: 0 18px;
+
+            background: #020617dd;
+
+            border-bottom: 1px solid var(--border);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            right: 0;
+
+            width: 100%;
+
+            z-index: 50;
+
+            backdrop-filter: blur(10px);
+
+            height: 56px;
+
+            max-height: 56px;
+
+            min-height: 56px;
+
+            box-sizing: border-box;
+
+            overflow: hidden;
+
+            contain: layout style paint;
+
+            transform: translate3d(0, 0, 0);
+
+            will-change: transform;
+
+            isolation: isolate;
+
+            backface-visibility: hidden;
+
+        }
+
+
+
+        .logo { 
+
+            font-weight: 700; 
+
+            font-size: 18px; 
+
+            line-height: 1.2;
+
+            flex-shrink: 0;
+
+        }
+
+        header > div:first-child {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            height: 56px;
+
+            max-height: 56px;
+
+            min-height: 56px;
+
+            padding: 14px 0;
+
+            box-sizing: border-box;
+
+            flex-shrink: 0;
+
+            overflow: hidden;
+
+            transform: translate3d(0, 0, 0);
+
+            backface-visibility: hidden;
+
+        }
+
+        header > div:last-child {
+
+            height: 56px;
+
+            max-height: 56px;
+
+            min-height: 56px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 14px 0;
+
+            box-sizing: border-box;
+
+            flex-shrink: 0;
+
+            overflow: hidden;
+
+            transform: translate3d(0, 0, 0);
+
+            backface-visibility: hidden;
+
+        }
+
+
+
+        .burger {
+
+            width: 32px;
+
+            height: 24px;
+
+            min-width: 32px;
+
+            max-width: 32px;
+
+            min-height: 24px;
+
+            max-height: 24px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            cursor: pointer;
+
+            margin-right: 12px;
+
+            flex-shrink: 0;
+
+            position: relative;
+
+            top: 0;
+
+            left: 0;
+
+            transform: translate3d(0, 0, 0);
+
+            will-change: transform;
+
+            backface-visibility: hidden;
+
+        }
+
+
+
+        .burger span {
+
+            height: 3px;
+
+            min-height: 3px;
+
+            width: 100%;
+
+            border-radius: 999px;
+
+            background: var(--text);
+
+            transition: transform 0.3s, opacity 0.3s;
+
+            flex-shrink: 0;
+
+            display: block;
+
+        }
+
+
+
+        .sidebar {
+
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 260px;
+
+            height: 100vh;
+
+            background: var(--bg-alt);
+
+            border-right: 1px solid var(--border);
+
+            padding: 16px;
+
+            transform: translateX(-100%);
+
+            transition: transform 0.3s;
+
+            z-index: 40;
+
+        }
+
+
+
+        .sidebar.open { transform: translateX(0); }
+
+
+
+        .sidebar-title { font-weight: 700; margin-bottom: 12px; }
+
+
+
+        .nav {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+            margin-top: 12px;
+
+        }
+
+
+
+        .nav-button {
+
+            width: 100%;
+
+            text-align: left;
+
+            padding: 10px 12px;
+
+            border-radius: 999px;
+
+            border: 1px solid transparent;
+
+            background: transparent;
+
+            color: var(--muted);
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+        }
+
+
+
+        .nav-button:hover {
+
+            background: #020617;
+
+            color: var(--text);
+
+        }
+
+
+
+        .nav-button.active {
+
+            background: var(--accent);
+
+            color: white;
+
+            border-color: var(--accent);
+
+        }
+
+
+
+        .sidebar-small {
+
+            font-size: 12px;
+
+            color: var(--muted);
+
+            margin-top: 16px;
+
+        }
+
+
+
+        .overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.5);
+
+            display: none;
+
+            z-index: 30;
+
+        }
+
+
+
+        .overlay.show { display: block; }
+
+
+
+        .main {
+
+            max-width: 960px;
+
+            margin: 0 auto;
+
+            padding: 20px 16px 40px;
+
+        }
+
+
+
+        .page { display: none; }
+
+        .page-active { display: block; }
+
+
+
+        h1, h2 { margin-top: 0; margin-bottom: 12px; }
+
+        p { color: var(--muted); }
+
+
+
+        .cards {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 16px;
+
+            margin-top: 24px;
+
+        }
+
+
+
+        .card {
+
+            background: var(--bg-alt);
+
+            padding: 18px;
+
+            border-radius: 16px;
+
+            border: 1px solid var(--border);
+
+            font-size: 14px;
+
+        }
+
+
+
+        .card h3 { margin-top: 0; margin-bottom: 8px; font-size: 16px; }
+
+
+
+        .tag {
+
+            display: inline-block;
+
+            font-size: 11px;
+
+            padding: 4px 8px;
+
+            border-radius: 999px;
+
+            background: #1d4ed8;
+
+            color: #e5e7eb;
+
+            margin-bottom: 6px;
+
+        }
+
+
+
+        .btn {
+
+            display: inline-block;
+
+            padding: 9px 18px;
+
+            border-radius: 999px;
+
+            border: none;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            text-decoration: none;
+
+        }
+
+
+
+        .btn-primary { background: var(--accent); color: white; }
+
+        .btn-primary:hover { background: #2563eb; }
+
+
+
+        .btn-outline {
+
+            background: transparent;
+
+            color: var(--text);
+
+            border: 1px solid #374151;
+
+        }
+
+        .btn-outline:hover { background: var(--bg-alt); }
+
+
+
+        .btn-telegram { background: #229ED9; color: white; }
+
+        .btn-telegram:hover { background: #1b7ca8; }
+
+
+
+        video, img { width: 100%; border-radius: 12px; }
+
+
+
+        label {
+
+            display: block;
+
+            margin-bottom: 6px;
+
+            font-size: 13px;
+
+        }
+
+
+
+        input, select {
+
+            width: 100%;
+
+            padding: 9px 10px;
+
+            border-radius: 10px;
+
+            border: 1px solid var(--border);
+
+            background: var(--bg-deep);
+
+            color: var(--text);
+
+            margin-bottom: 10px;
+
+            font-size: 14px;
+
+        }
+
+
+
+        input:focus, select:focus { outline: 1px solid var(--accent); }
+
+
+
+        .error {
+
+            color: #f97373;
+
+            font-size: 13px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+
+        .success {
+
+            color: #22c55e;
+
+            font-size: 13px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+
+        .info-row {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+            margin-top: 16px;
+
+        }
+
+
+
+        .info-box {
+
+            flex: 1 1 220px;
+
+            background: var(--bg-deep);
+
+            padding: 10px 12px;
+
+            border-radius: 10px;
+
+            border: 1px solid var(--border);
+
+            font-size: 13px;
+
+        }
+
+
+
+        footer {
+
+            text-align: center;
+
+            font-size: 12px;
+
+            color: #6b7280;
+
+            border-top: 1px solid var(--border);
+
+            padding: 16px;
+
+            margin-top: 20px;
+
+        }
+
+
+
+        .progress {
+
+            width: 100%;
+
+            height: 10px;
+
+            border-radius: 999px;
+
+            background: #020617;
+
+            margin-top: 8px;
+
+            overflow: hidden;
+
+        }
+
+        .progress-bar {
+
+            height: 100%;
+
+            width: 0;
+
+            background: #22c55e;
+
+            transition: width .3s;
+
+        }
+
+        .progress-text {
+
+            font-size: 12px;
+
+            margin-top: 4px;
+
+            color: var(--muted);
+
+        }
+
+
+
+        .weeks-list {
+
+            list-style: none;
+
+            padding-left: 0;
+
+            margin-top: 8px;
+
+            font-size: 12px;
+
+        }
+
+        .weeks-list li { margin-bottom: 2px; }
+
+
+
+        .week-form-row {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 8px;
+
+        }
+
+        .week-form-row input {
+
+            flex: 1 1 140px;
+
+            margin-bottom: 0;
+
+        }
+
+        .week-form-row button {
+
+            flex: 0 0 auto;
+
+            margin-top: 0;
+
+        }
+
+
+
+        .auth-tabs {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-bottom: 16px;
+
+            border-bottom: 1px solid var(--border);
+
+        }
+
+
+
+        .auth-tab {
+
+            padding: 10px 16px;
+
+            background: transparent;
+
+            border: none;
+
+            border-bottom: 2px solid transparent;
+
+            color: var(--muted);
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            transition: all 0.2s;
+
+        }
+
+
+
+        .auth-tab:hover {
+
+            color: var(--text);
+
+        }
+
+
+
+        .auth-tab.active {
+
+            color: var(--accent);
+
+            border-bottom-color: var(--accent);
+
+        }
+
+
+
+        .auth-form {
+
+            display: none;
+
+        }
+
+
+
+        .auth-form.active {
+
+            display: block;
+
+        }
+
+
+
+        .message {
+
+            margin-bottom: 12px;
+
+            padding: 10px 12px;
+
+            border-radius: 10px;
+
+            max-width: 80%;
+
+            word-wrap: break-word;
+
+        }
+
+
+
+        .message.teacher {
+
+            background: var(--accent);
+
+            color: white;
+
+            margin-left: auto;
+
+            text-align: right;
+
+        }
+
+
+
+        .message.student {
+
+            background: var(--bg-alt);
+
+            color: var(--text);
+
+            border: 1px solid var(--border);
+
+        }
+
+
+
+        .message-time {
+
+            font-size: 11px;
+
+            opacity: 0.7;
+
+            margin-top: 4px;
+
+        }
+
+
+
+        .student-item {
+
+            padding: 12px;
+
+            background: var(--bg-alt);
+
+            border: 1px solid var(--border);
+
+            border-radius: 10px;
+
+            margin-bottom: 8px;
+
+            cursor: pointer;
+
+            transition: background 0.2s;
+
+        }
+
+
+
+        .student-item:hover {
+
+            background: var(--bg-deep);
+
+        }
+
+
+
+        .student-item.active {
+
+            background: var(--accent);
+
+            color: white;
+
+        }
+
+
+
+        @media (min-width: 900px) {
+
+            .app {
+
+                display: grid;
+
+                grid-template-columns: 260px 1fr;
+
+                padding-top: 56px;
+
+            }
+
+
+
+            .sidebar {
+
+                position: static;
+
+                height: auto;
+
+                transform: none;
+
+            }
+
+
+
+            .main { padding: 24px 32px 40px; }
+
+
+
+            .overlay { display: none !important; }
+
+
+
+            .burger { display: none; }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <header>
+
+        <div style="display:flex;align-items:center;gap:8px;">
+
+            <div class="burger" id="burger">
+
+                <span></span><span></span><span></span>
+
+            </div>
+
+            <div class="logo">English School</div>
+
+        </div>
+
+        <div>
+
+            <a href="https://t.me/nazardenglish" class="btn btn-telegram" target="_blank">
+
+                Мій Telegram
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-title">Навігація</div>
+
+        <div class="nav">
+
+            <button class="nav-button active" data-page="home">🏠 Головна</button>
+
+            <button class="nav-button" data-page="tips">💡 Підказки</button>
+
+            <button class="nav-button" data-page="cabinet">👤 Особистий кабінет</button>
+
+            <button class="nav-button" data-page="chat">💬 Чат з вчителем</button>
+
+        </div>
+
+        <div class="sidebar-small">
+
+            Обери вкладку, вона відкриється по центру.<br>
+
+            На телефоні меню ховається під "трьома полосками".
+
+        </div>
+
+    </aside>
+
+
+
+    <div class="overlay" id="overlay"></div>
+
+
+
+    <main class="main">
+
+        <!-- ГОЛОВНА -->
+
+        <section class="page page-active" id="page-home">
+
+            <h1>Привіт, мене звати Назар 👋</h1>
+
+            <p>
+
+                Це сайт школи англійської мови. Тут можна дізнатися про курси, подивитися фото та відео з уроків,
+
+                а також зайти в особистий кабінет учня.
+
+            </p>
+
+
+
+            <a href="#" class="btn btn-primary" onclick="openPage('cabinet');return false;">
+
+                Перейти в особистий кабінет
+
+            </a>
+
+
+
+            <h2 style="margin-top:32px;">Курси</h2>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <span class="tag">A1–A2</span>
+
+                    <h3>Початковий рівень</h3>
+
+                    <p>Базова граматика, алфавіт, прості діалоги, багато ігор та карток.</p>
+
+                </div>
+
+                <div class="card">
+
+                    <span class="tag">B1–B2</span>
+
+                    <h3>Середній рівень</h3>
+
+                    <p>Більше розмовної практики, підготовка до шкільних контрольних та іспитів.</p>
+
+                </div>
+
+                <div class="card">
+
+                    <span class="tag">Speaking</span>
+
+                    <h3>Розмовні клуби</h3>
+
+                    <p>Обговорюємо фільми, музику, ігри та реальні теми англійською.</p>
+
+                </div>
+
+            </div>
+
+
+
+            <h2 style="margin-top:32px;">Медіа</h2>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>Фото з уроку</h3>
+
+                    <p>Сюди можна поставити фото з занять.</p>
+
+                    <img src="photo.jpg" alt="Фото школи">
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Відео з заняття</h3>
+
+                    <p>Тут можна показувати короткий фрагмент уроку.</p>
+
+                    <video controls>
+
+                        <source src="lesson.mp4" type="video/mp4">
+
+                        Ваш браузер не підтримує відео.
+
+                    </video>
+
+                    <p style="font-size:12px;margin-top:6px;color:#9ca3af;">
+
+                        Поклади файл <strong>lesson.mp4</strong> у ту ж папку, що й <strong>index.html</strong>.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ПІДКАЗКИ -->
+
+        <section class="page" id="page-tips">
+
+            <h1>Підказки для вивчення англійської 💡</h1>
+
+            <p>Тут учні можуть піддивитися корисні поради, як легше вчити англійську.</p>
+
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <h3>Як вчити слова</h3>
+
+                    <ul style="padding-left:18px;color:#9ca3af;">
+
+                        <li>Вчи не окремі слова, а фрази (<em>have breakfast</em> замість просто <em>breakfast</em>).</li>
+
+                        <li>Повторюй по 5–10 хвилин щодня, а не 2 години раз на місяць.</li>
+
+                        <li>Роби свої списки слів по темах: школа, їжа, подорожі.</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Що дивитися</h3>
+
+                    <ul style="padding-left:18px;color:#9ca3af;">
+
+                        <li>Мультфільми або серіали з англійськими субтитрами.</li>
+
+                        <li>Короткі відео на YouTube для рівня A1–B1.</li>
+
+                        <li>Спочатку слухай, а потім вже підглядай у переклад.</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>Як не соромитись говорити</h3>
+
+                    <ul style="padding-left:18px;color:#9ca3af;">
+
+                        <li>Розмовляй із однокласниками англійською хоча б 5 хвилин на уроці.</li>
+
+                        <li>Не бійся помилок – це нормальна частина навчання.</li>
+
+                        <li>Записуй себе на відео й слухай, як звучиш.</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- КАБІНЕТ -->
+
+        <section class="page" id="page-cabinet">
+
+            <h1>Особистий кабінет учня 👤</h1>
+
+            <p>
+
+                Тут демонстраційний вхід у кабінет.<br>
+
+                Дані зберігаються на Firebase (акаунт + прогрес).
+
+            </p>
+
+
+
+            <div class="card" id="login-section">
+
+                <h2 style="margin-top:0;">Вхід / Реєстрація</h2>
+
+                <p style="font-size:13px;margin-bottom:10px;">
+
+                    Оберіть, чи хочете увійти в існуючий акаунт, чи зареєструвати новий.
+
+                </p>
+
+
+
+                <div class="auth-tabs">
+
+                    <button class="auth-tab active" data-tab="login">Вхід</button>
+
+                    <button class="auth-tab" data-tab="register">Реєстрація</button>
+
+                </div>
+
+
+
+                <div id="error" class="error" style="display:none;"></div>
+
+                <div id="success" class="success" style="display:none;"></div>
+
+
+
+                <!-- Форма входу -->
+
+                <form id="login-form" class="auth-form active">
+
+                    <label for="login-email">Email</label>
+
+                    <input type="email" id="login-email" name="email"
+
+                           placeholder="Введіть свою пошту" required>
+
+
+
+                    <label for="login-password">Пароль</label>
+
+                    <input type="password" id="login-password" name="password"
+
+                           placeholder="Введіть пароль" required>
+
+
+
+                    <button type="submit" class="btn btn-primary">Увійти</button>
+
+                </form>
+
+
+
+                <!-- Форма реєстрації -->
+
+                <form id="register-form" class="auth-form">
+
+                    <label for="register-firstname">Ім'я</label>
+
+                    <input type="text" id="register-firstname" name="firstname"
+
+                           placeholder="Введіть ваше ім'я" required>
+
+
+
+                    <label for="register-lastname">Прізвище</label>
+
+                    <input type="text" id="register-lastname" name="lastname"
+
+                           placeholder="Введіть ваше прізвище" required>
+
+
+
+                    <label for="register-email">Email</label>
+
+                    <input type="email" id="register-email" name="email"
+
+                           placeholder="Введіть свою пошту" required>
+
+
+
+                    <label for="register-password">Пароль</label>
+
+                    <input type="password" id="register-password" name="password"
+
+                           placeholder="Введіть пароль (мінімум 6 символів)" required minlength="6">
+
+
+
+                    <label for="register-password-confirm">Підтвердіть пароль</label>
+
+                    <input type="password" id="register-password-confirm" name="passwordConfirm"
+
+                           placeholder="Введіть пароль ще раз" required minlength="6">
+
+
+
+                    <button type="submit" class="btn btn-primary">Зареєструватися</button>
+
+                </form>
+
+            </div>
+
+
+
+            <div class="card" id="cabinet-section" style="display:none;margin-top:20px;">
+
+                <h2 style="margin-top:0;">Вітаю в кабінеті 👋</h2>
+
+                <p>Ви зайшли як: <strong id="user-email"></strong></p>
+
+
+
+                <div class="info-row">
+
+                    <div class="info-box">
+
+                        <strong>Ваш рівень:</strong><br>
+
+                        <select id="level-select">
+
+                            <option value="A1 – Beginner">A1 – Beginner</option>
+
+                            <option value="A2 – Elementary">A2 – Elementary</option>
+
+                            <option value="B1 – Intermediate">B1 – Intermediate</option>
+
+                            <option value="B2 – Upper-Intermediate">B2 – Upper-Intermediate</option>
+
+                            <option value="C1 – Advanced">C1 – Advanced</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="info-box">
+
+                        <strong>Група:</strong><br>
+
+                        <input id="group-input" type="text" placeholder="Напр. Teens Group #3">
+
+                    </div>
+
+                    <div class="info-box">
+
+                        <strong>Розклад:</strong><br>
+
+                        <input id="schedule-input" type="text" placeholder="Пн / Ср / Пт – 17:00">
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="info-row">
+
+                    <div class="info-box">
+
+                        <strong>Прогрес по уроках:</strong><br>
+
+                        <div style="margin-top:6px;font-size:12px;">
+
+                            Пройдено уроків:
+
+                            <input type="number" id="lessons-done" min="0" value="0" style="width:80px;display:inline-block;">
+
+                            з
+
+                            <input type="number" id="lessons-total" min="1" value="20" style="width:80px;display:inline-block;">
+
+                        </div>
+
+                        <div class="progress">
+
+                            <div class="progress-bar" id="lessons-progress-bar"></div>
+
+                        </div>
+
+                        <div class="progress-text" id="lessons-progress-text"></div>
+
+                    </div>
+
+
+
+                    <div class="info-box">
+
+                        <strong>Слова:</strong><br>
+
+                        <div style="margin-top:6px;font-size:12px;">
+
+                            Вивчено слів:
+
+                            <input type="number" id="words-learned" min="0" value="0" style="width:80px;display:inline-block;">
+
+                            з цілі
+
+                            <input type="number" id="words-goal" min="1" value="100" style="width:80px;display:inline-block;">
+
+                        </div>
+
+                        <div class="progress">
+
+                            <div class="progress-bar" id="words-progress-bar"></div>
+
+                        </div>
+
+                        <div class="progress-text" id="words-progress-text"></div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="info-row">
+
+                    <div class="info-box" style="flex:1 1 100%;">
+
+                        <strong>Статистика по тижнях (скільки уроків проведено):</strong>
+
+                        <div class="week-form-row">
+
+                            <input type="week" id="week-input">
+
+                            <input type="number" id="week-lessons" min="0" placeholder="Уроків за тиждень">
+
+                            <button id="add-week-btn" type="button" class="btn btn-outline">Додати тиждень</button>
+
+                        </div>
+
+                        <ul id="weeks-list" class="weeks-list"></ul>
+
+                    </div>
+
+                </div>
+
+
+
+                <button id="logout-btn" class="btn btn-outline" style="margin-top:14px;">
+
+                    Вийти з акаунта
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ЧАТ -->
+
+        <section class="page" id="page-chat">
+
+            <h1>Чат з вчителем 💬</h1>
+
+
+
+            <!-- Для вчителя: список учнів -->
+
+            <div id="teacher-view" style="display:none;">
+
+                <div class="card">
+
+                    <h2 style="margin-top:0;">Список учнів</h2>
+
+                    <p>Оберіть учня для перегляду повідомлень:</p>
+
+                    <div id="students-list" style="margin-top:16px;"></div>
+
+                </div>
+
+
+
+                <div class="card" id="teacher-chat-section" style="display:none;margin-top:20px;">
+
+                    <h2 style="margin-top:0;">Чат з <span id="selected-student-name"></span></h2>
+
+                    <div id="teacher-messages" style="max-height:400px;overflow-y:auto;margin-bottom:16px;padding:12px;background:var(--bg-deep);border-radius:10px;border:1px solid var(--border);"></div>
+
+                    <div style="display:flex;gap:8px;">
+
+                        <input type="text" id="teacher-message-input" placeholder="Введіть повідомлення..." style="flex:1;margin-bottom:0;">
+
+                        <button id="teacher-send-btn" class="btn btn-primary">Відправити</button>
+
+                    </div>
+
+                    <button id="back-to-students" class="btn btn-outline" style="margin-top:12px;">Назад до списку</button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Для учня: чат з вчителем -->
+
+            <div id="student-view" style="display:none;">
+
+                <div class="card">
+
+                    <h2 style="margin-top:0;">Ваші повідомлення</h2>
+
+                    <div id="student-messages" style="max-height:400px;overflow-y:auto;margin-bottom:16px;padding:12px;background:var(--bg-deep);border-radius:10px;border:1px solid var(--border);"></div>
+
+                    <div style="display:flex;gap:8px;">
+
+                        <input type="text" id="student-message-input" placeholder="Введіть повідомлення..." style="flex:1;margin-bottom:0;">
+
+                        <button id="student-send-btn" class="btn btn-primary">Відправити</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Якщо не залогінений -->
+
+            <div id="chat-login-prompt" class="card">
+
+                <p>Для доступу до чату потрібно увійти в акаунт.</p>
+
+                <a href="#" class="btn btn-primary" onclick="openPage('cabinet');return false;">Увійти</a>
+
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+</div>
+
+
+
+<footer>
+
+    © <span id="year"></span> English School. Зроблено Назаром.
+
+</footer>
+
+
+
+<!-- Firebase SDK через CDN (compat) -->
+
+<script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-app-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-auth-compat.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/11.0.1/firebase-database-compat.js"></script>
+
+
+
+<script>
+
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyCx9TCFKNHyjFSOasZETUFIPdv7xt7kD6s",
+
+    authDomain: "project-6159663906776517660.firebaseapp.com",
+
+    databaseURL: "https://project-6159663906776517660-default-rtdb.firebaseio.com",
+
+    projectId: "project-6159663906776517660",
+
+    storageBucket: "project-6159663906776517660.firebasestorage.app",
+
+    messagingSenderId: "393177783460",
+
+    appId: "1:393177783460:web:8e1c38fdb1392ad7819a31",
+
+    measurementId: "G-HHNPZXF359"
+
+  };
+
+
+
+  firebase.initializeApp(firebaseConfig);
+
+  const auth = firebase.auth();
+
+  const db = firebase.database();
+
+</script>
+
+
+
+<script>
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+
+
+    const burger = document.getElementById("burger");
+
+    const sidebar = document.getElementById("sidebar");
+
+    const overlay = document.getElementById("overlay");
+
+    const navButtons = document.querySelectorAll(".nav-button");
+
+
+
+    function openSidebar() {
+
+        sidebar.classList.add("open");
+
+        overlay.classList.add("show");
+
+    }
+
+    function closeSidebar() {
+
+        sidebar.classList.remove("open");
+
+        overlay.classList.remove("show");
+
+    }
+
+    if (burger) burger.addEventListener("click", openSidebar);
+
+    if (overlay) overlay.addEventListener("click", closeSidebar);
+
+
+
+    function openPage(pageName) {
+
+        navButtons.forEach(btn => {
+
+            btn.classList.toggle("active", btn.dataset.page === pageName);
+
+        });
+
+        document.querySelectorAll(".page").forEach(page => {
+
+            page.classList.remove("page-active");
+
+        });
+
+        const target = document.getElementById("page-" + pageName);
+
+        if (target) target.classList.add("page-active");
+
+        closeSidebar();
+
+        
+
+        // Якщо відкривається чат, показуємо відповідний view
+
+        if (pageName === "chat") {
+
+            showChatView();
+
+        }
+
+    }
+
+    navButtons.forEach(btn => {
+
+        btn.addEventListener("click", () => openPage(btn.dataset.page));
+
+    });
+
+
+
+    // Перемикач між формами входу та реєстрації
+
+    const authTabs = document.querySelectorAll(".auth-tab");
+
+    const loginForm = document.getElementById("login-form");
+
+    const registerForm = document.getElementById("register-form");
+
+
+
+    authTabs.forEach(tab => {
+
+        tab.addEventListener("click", () => {
+
+            const tabType = tab.dataset.tab;
+
+            authTabs.forEach(t => t.classList.remove("active"));
+
+            tab.classList.add("active");
+
+
+
+            loginForm.classList.toggle("active", tabType === "login");
+
+            registerForm.classList.toggle("active", tabType === "register");
+
+
+
+            document.getElementById("error").style.display = "none";
+
+            document.getElementById("success").style.display = "none";
+
+        });
+
+    });
+
+
+
+    const loginSection = document.getElementById("login-section");
+
+    const cabinetSection = document.getElementById("cabinet-section");
+
+    const userEmailSpan = document.getElementById("user-email");
+
+    const errorBox = document.getElementById("error");
+
+    const successBox = document.getElementById("success");
+
+    const logoutBtn = document.getElementById("logout-btn");
+
+
+
+    const levelSelect = document.getElementById("level-select");
+
+    const groupInput = document.getElementById("group-input");
+
+    const scheduleInput = document.getElementById("schedule-input");
+
+
+
+    const lessonsDoneInput = document.getElementById("lessons-done");
+
+    const lessonsTotalInput = document.getElementById("lessons-total");
+
+    const lessonsProgressBar = document.getElementById("lessons-progress-bar");
+
+    const lessonsProgressText = document.getElementById("lessons-progress-text");
+
+
+
+    const wordsLearnedInput = document.getElementById("words-learned");
+
+    const wordsGoalInput = document.getElementById("words-goal");
+
+    const wordsProgressBar = document.getElementById("words-progress-bar");
+
+    const wordsProgressText = document.getElementById("words-progress-text");
+
+
+
+    const weekInput = document.getElementById("week-input");
+
+    const weekLessonsInput = document.getElementById("week-lessons");
+
+    const addWeekBtn = document.getElementById("add-week-btn");
+
+    const weeksList = document.getElementById("weeks-list");
+
+
+
+    let currentUser = null;
+
+    let currentProfile = null;
+
+
+
+    function defaultProfile() {
+
+        return {
+
+            firstname: "",
+
+            lastname: "",
+
+            level: "A2 – Elementary",
+
+            group: "Teens Group #3",
+
+            schedule: "Пн / Ср / Пт – 17:00",
+
+            lessonsDone: 12,
+
+            lessonsTotal: 20,
+
+            wordsLearned: 0,
+
+            wordsGoal: 100,
+
+            weeks: []
+
+        };
+
+    }
+
+
+
+    async function loadProfile(uid) {
+
+        try {
+
+            const snap = await db.ref("profiles/" + uid).get();
+
+            if (!snap.exists()) {
+
+                const prof = defaultProfile();
+
+                await db.ref("profiles/" + uid).set(prof);
+
+                return prof;
+
+            }
+
+            return snap.val();
+
+        } catch (e) {
+
+            console.error("loadProfile error", e);
+
+            return defaultProfile();
+
+        }
+
+    }
+
+
+
+    function saveProfile() {
+
+        if (!currentUser || !currentProfile) return;
+
+        db.ref("profiles/" + currentUser.uid).set(currentProfile).catch(console.error);
+
+    }
+
+
+
+    function updateLessonsProgress() {
+
+        const done = Math.max(0, Number(currentProfile.lessonsDone) || 0);
+
+        const total = Math.max(1, Number(currentProfile.lessonsTotal) || 1);
+
+        const percent = Math.min(100, Math.round(done / total * 100));
+
+        lessonsProgressBar.style.width = percent + "%";
+
+        lessonsProgressText.textContent = `${done} з ${total} уроків (${percent}%)`;
+
+    }
+
+
+
+    function updateWordsProgress() {
+
+        const learned = Math.max(0, Number(currentProfile.wordsLearned) || 0);
+
+        const goal = Math.max(1, Number(currentProfile.wordsGoal) || 1);
+
+        const percent = Math.min(100, Math.round(learned / goal * 100));
+
+        wordsProgressBar.style.width = percent + "%";
+
+        wordsProgressText.textContent = `${learned} / ${goal} слів (${percent}%)`;
+
+    }
+
+
+
+    function renderWeeks() {
+
+        weeksList.innerHTML = "";
+
+        if (!currentProfile.weeks || currentProfile.weeks.length === 0) {
+
+            const li = document.createElement("li");
+
+            li.textContent = "Ще немає записів по тижнях.";
+
+            weeksList.appendChild(li);
+
+            return;
+
+        }
+
+        currentProfile.weeks.forEach(item => {
+
+            const li = document.createElement("li");
+
+            const label = item.week || "Без дати";
+
+            li.textContent = `${label}: ${item.lessons} уроків`;
+
+            weeksList.appendChild(li);
+
+        });
+
+    }
+
+
+
+    function applyProfileToUI() {
+
+        if (!currentProfile) return;
+
+        levelSelect.value = currentProfile.level || "A2 – Elementary";
+
+        groupInput.value = currentProfile.group || "";
+
+        scheduleInput.value = currentProfile.schedule || "";
+
+
+
+        lessonsDoneInput.value = currentProfile.lessonsDone ?? 0;
+
+        lessonsTotalInput.value = currentProfile.lessonsTotal ?? 20;
+
+        wordsLearnedInput.value = currentProfile.wordsLearned ?? 0;
+
+        wordsGoalInput.value = currentProfile.wordsGoal ?? 100;
+
+
+
+        updateLessonsProgress();
+
+        updateWordsProgress();
+
+        renderWeeks();
+
+    }
+
+
+
+    async function showCabinet(user) {
+
+        currentUser = user;
+
+        userEmailSpan.textContent = user.email;
+
+        loginSection.style.display = "none";
+
+        cabinetSection.style.display = "block";
+
+        currentProfile = await loadProfile(user.uid);
+
+        applyProfileToUI();
+
+    }
+
+
+
+    function showLogin() {
+
+        currentUser = null;
+
+        currentProfile = null;
+
+        loginSection.style.display = "block";
+
+        cabinetSection.style.display = "none";
+
+        errorBox.style.display = "none";
+
+        successBox.style.display = "none";
+
+    }
+
+
+
+    auth.onAuthStateChanged(async (user) => {
+
+        if (user) {
+
+            errorBox.style.display = "none";
+
+            await showCabinet(user);
+
+            
+
+            // Якщо відкрита вкладка чату, оновлюємо її
+
+            if (document.getElementById("page-chat")?.classList.contains("page-active")) {
+
+                showChatView();
+
+            }
+
+        } else {
+
+            showLogin();
+
+            
+
+            // Зупиняємо listener чату при виході
+
+            if (chatListener) {
+
+                const chatPath = selectedStudentId 
+
+                    ? `chats/${selectedStudentId}` 
+
+                    : (currentUser ? `chats/${currentUser.uid}` : null);
+
+                if (chatPath) db.ref(chatPath).off("value", chatListener);
+
+                chatListener = null;
+
+                selectedStudentId = null;
+
+            }
+
+        }
+
+    });
+
+
+
+    // Обробка форми входу
+
+    if (loginForm) {
+
+        loginForm.addEventListener("submit", async function (e) {
+
+            e.preventDefault();
+
+            const email = document.getElementById("login-email").value.trim();
+
+            const password = document.getElementById("login-password").value.trim();
+
+
+
+            errorBox.style.display = "none";
+
+            successBox.style.display = "none";
+
+
+
+            try {
+
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+
+                errorBox.style.display = "none";
+
+                await showCabinet(userCredential.user);
+
+            } catch (err) {
+
+                console.error(err);
+
+                let errorMessage = "Помилка входу: ";
+
+                if (err.code === "auth/user-not-found") {
+
+                    errorMessage += "Користувача з таким email не знайдено. Зареєструйтеся спочатку.";
+
+                } else if (err.code === "auth/wrong-password") {
+
+                    errorMessage += "Невірний пароль.";
+
+                } else if (err.code === "auth/invalid-email") {
+
+                    errorMessage += "Невірний формат email.";
+
+                } else {
+
+                    errorMessage += err.message || "Невідома помилка.";
+
+                }
+
+                errorBox.textContent = errorMessage;
+
+                errorBox.style.display = "block";
+
+            }
+
+        });
+
+    }
+
+
+
+    // Обробка форми реєстрації
+
+    if (registerForm) {
+
+        registerForm.addEventListener("submit", async function (e) {
+
+            e.preventDefault();
+
+            const firstname = document.getElementById("register-firstname").value.trim();
+
+            const lastname = document.getElementById("register-lastname").value.trim();
+
+            const email = document.getElementById("register-email").value.trim();
+
+            const password = document.getElementById("register-password").value.trim();
+
+            const passwordConfirm = document.getElementById("register-password-confirm").value.trim();
+
+
+
+            errorBox.style.display = "none";
+
+            successBox.style.display = "none";
+
+
+
+            // Перевірка паролів
+
+            if (password !== passwordConfirm) {
+
+                errorBox.textContent = "Паролі не співпадають!";
+
+                errorBox.style.display = "block";
+
+                return;
+
+            }
+
+            if (password.length < 6) {
+
+                errorBox.textContent = "Пароль повинен містити мінімум 6 символів!";
+
+                errorBox.style.display = "block";
+
+                return;
+
+            }
+
+
+
+            try {
+
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+
+                
+
+                // Зберігаємо ім'я та прізвище в профіль
+
+                const profile = defaultProfile();
+
+                profile.firstname = firstname;
+
+                profile.lastname = lastname;
+
+                profile.email = email;
+
+                await db.ref("profiles/" + userCredential.user.uid).set(profile);
+
+                
+
+                successBox.textContent = "Реєстрація успішна! Вітаємо!";
+
+                successBox.style.display = "block";
+
+                await showCabinet(userCredential.user);
+
+            } catch (err) {
+
+                console.error(err);
+
+                let errorMessage = "Помилка реєстрації: ";
+
+                if (err.code === "auth/email-already-in-use") {
+
+                    errorMessage += "Користувач з таким email вже існує. Спробуйте увійти.";
+
+                } else if (err.code === "auth/invalid-email") {
+
+                    errorMessage += "Невірний формат email.";
+
+                } else if (err.code === "auth/weak-password") {
+
+                    errorMessage += "Пароль занадто слабкий. Використовуйте мінімум 6 символів.";
+
+                } else {
+
+                    errorMessage += err.message || "Невідома помилка.";
+
+                }
+
+                errorBox.textContent = errorMessage;
+
+                errorBox.style.display = "block";
+
+            }
+
+        });
+
+    }
+
+
+
+    if (logoutBtn) {
+
+        logoutBtn.addEventListener("click", function () {
+
+            auth.signOut().catch(console.error);
+
+        });
+
+    }
+
+
+
+    levelSelect.addEventListener("change", () => {
+
+        if (!currentProfile) return;
+
+        currentProfile.level = levelSelect.value;
+
+        saveProfile();
+
+    });
+
+    groupInput.addEventListener("input", () => {
+
+        if (!currentProfile) return;
+
+        currentProfile.group = groupInput.value;
+
+        saveProfile();
+
+    });
+
+    scheduleInput.addEventListener("input", () => {
+
+        if (!currentProfile) return;
+
+        currentProfile.schedule = scheduleInput.value;
+
+        saveProfile();
+
+    });
+
+
+
+    lessonsDoneInput.addEventListener("input", () => {
+
+        if (!currentProfile) return;
+
+        currentProfile.lessonsDone = Number(lessonsDoneInput.value) || 0;
+
+        updateLessonsProgress();
+
+        saveProfile();
+
+    });
+
+    lessonsTotalInput.addEventListener("input", () => {
+
+        if (!currentProfile) return;
+
+        currentProfile.lessonsTotal = Number(lessonsTotalInput.value) || 1;
+
+        updateLessonsProgress();
+
+        saveProfile();
+
+    });
+
+
+
+    wordsLearnedInput.addEventListener("input", () => {
+
+        if (!currentProfile) return;
+
+        currentProfile.wordsLearned = Number(wordsLearnedInput.value) || 0;
+
+        updateWordsProgress();
+
+        saveProfile();
+
+    });
+
+    wordsGoalInput.addEventListener("input", () => {
+
+        if (!currentProfile) return;
+
+        currentProfile.wordsGoal = Number(wordsGoalInput.value) || 1;
+
+        updateWordsProgress();
+
+        saveProfile();
+
+    });
+
+
+
+    addWeekBtn.addEventListener("click", () => {
+
+        if (!currentProfile) return;
+
+        const week = weekInput.value || "Тиждень без дати";
+
+        const lessons = Number(weekLessonsInput.value);
+
+        if (isNaN(lessons) || lessons < 0) return;
+
+        if (!currentProfile.weeks) currentProfile.weeks = [];
+
+        currentProfile.weeks.push({ week, lessons });
+
+        weekLessonsInput.value = "";
+
+        renderWeeks();
+
+        saveProfile();
+
+    });
+
+
+
+    // ========== ЧАТ ==========
+
+    // Email вчителя - ЗМІНІТЬ НА СВІЙ EMAIL!
+
+    const TEACHER_EMAIL = "rabtor17da@gmail.com"; // <-- ЗМІНІТЬ ЦЕ НА СВІЙ EMAIL!
+
+
+
+    let selectedStudentId = null;
+
+    let chatListener = null;
+
+
+
+    function isTeacher(user) {
+
+        return user && user.email === TEACHER_EMAIL;
+
+    }
+
+
+
+    async function loadStudentsList() {
+
+        try {
+
+            const snap = await db.ref("profiles").get();
+
+            const studentsList = document.getElementById("students-list");
+
+            studentsList.innerHTML = "";
+
+            
+
+            if (!snap.exists()) {
+
+                studentsList.innerHTML = "<p>Поки що немає зареєстрованих учнів.</p>";
+
+                return;
+
+            }
+
+            
+
+            const profiles = snap.val();
+
+            const students = [];
+
+            
+
+            for (const uid in profiles) {
+
+                const profile = profiles[uid];
+
+                if (profile.firstname && profile.lastname) {
+
+                    students.push({
+
+                        uid: uid,
+
+                        firstname: profile.firstname || "",
+
+                        lastname: profile.lastname || "",
+
+                        email: profile.email || ""
+
+                    });
+
+                }
+
+            }
+
+            
+
+            if (students.length === 0) {
+
+                studentsList.innerHTML = "<p>Поки що немає зареєстрованих учнів.</p>";
+
+                return;
+
+            }
+
+            
+
+            students.forEach(student => {
+
+                const div = document.createElement("div");
+
+                div.className = "student-item";
+
+                div.textContent = `${student.firstname} ${student.lastname} (${student.email})`;
+
+                div.onclick = () => selectStudent(student.uid, student.firstname, student.lastname);
+
+                studentsList.appendChild(div);
+
+            });
+
+            
+
+        } catch (e) {
+
+            console.error("loadStudentsList error", e);
+
+        }
+
+    }
+
+
+
+    function selectStudent(uid, firstname, lastname) {
+
+        selectedStudentId = uid;
+
+        document.getElementById("selected-student-name").textContent = `${firstname} ${lastname}`;
+
+        document.getElementById("teacher-chat-section").style.display = "block";
+
+        
+
+        // Підсвічуємо вибраного учня
+
+        document.querySelectorAll(".student-item").forEach(item => {
+
+            item.classList.remove("active");
+
+            if (item.textContent.includes(firstname) && item.textContent.includes(lastname)) {
+
+                item.classList.add("active");
+
+            }
+
+        });
+
+        
+
+        loadChatMessages(uid);
+
+    }
+
+
+
+    function backToStudents() {
+
+        selectedStudentId = null;
+
+        document.getElementById("teacher-chat-section").style.display = "none";
+
+        if (chatListener) {
+
+            db.ref(`chats/${selectedStudentId}`).off("value", chatListener);
+
+            chatListener = null;
+
+        }
+
+    }
+
+
+
+    async function loadChatMessages(otherUserId) {
+
+        const messagesDiv = isTeacher(currentUser) 
+
+            ? document.getElementById("teacher-messages")
+
+            : document.getElementById("student-messages");
+
+            
+
+        messagesDiv.innerHTML = "";
+
+        
+
+        // Зупиняємо попередній listener
+
+        if (chatListener) {
+
+            const chatPath = isTeacher(currentUser) 
+
+                ? `chats/${otherUserId}` 
+
+                : `chats/${currentUser.uid}`;
+
+            db.ref(chatPath).off("value", chatListener);
+
+        }
+
+        
+
+        const chatPath = isTeacher(currentUser) 
+
+            ? `chats/${otherUserId}` 
+
+            : `chats/${currentUser.uid}`;
+
+        
+
+        // Завантажуємо існуючі повідомлення
+
+        try {
+
+            const snap = await db.ref(chatPath).get();
+
+            if (snap.exists()) {
+
+                const messages = snap.val();
+
+                Object.keys(messages).sort().forEach(key => {
+
+                    renderMessage(messages[key], messagesDiv);
+
+                });
+
+            }
+
+        } catch (e) {
+
+            console.error("loadChatMessages error", e);
+
+        }
+
+        
+
+        // Слухаємо нові повідомлення
+
+        chatListener = (snap) => {
+
+            if (snap.exists()) {
+
+                const messages = snap.val();
+
+                messagesDiv.innerHTML = "";
+
+                Object.keys(messages).sort().forEach(key => {
+
+                    renderMessage(messages[key], messagesDiv);
+
+                });
+
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            }
+
+        };
+
+        
+
+        db.ref(chatPath).on("value", chatListener);
+
+        
+
+        // Прокручуємо до низу
+
+        setTimeout(() => {
+
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+        }, 100);
+
+    }
+
+
+
+    function renderMessage(msg, container) {
+
+        const div = document.createElement("div");
+
+        div.className = `message ${msg.from === "teacher" ? "teacher" : "student"}`;
+
+        
+
+        const isCurrentUser = (isTeacher(currentUser) && msg.from === "teacher") ||
+
+                              (!isTeacher(currentUser) && msg.from === "student");
+
+        
+
+        div.innerHTML = `
+
+            <div>${msg.text}</div>
+
+            <div class="message-time">${new Date(msg.timestamp).toLocaleString("uk-UA")}</div>
+
+        `;
+
+        
+
+        container.appendChild(div);
+
+    }
+
+
+
+    async function sendMessage(text, from) {
+
+        if (!text.trim()) return;
+
+        
+
+        const chatPath = isTeacher(currentUser) 
+
+            ? `chats/${selectedStudentId}` 
+
+            : `chats/${currentUser.uid}`;
+
+        
+
+        const message = {
+
+            text: text.trim(),
+
+            from: from,
+
+            timestamp: Date.now()
+
+        };
+
+        
+
+        try {
+
+            await db.ref(`${chatPath}/${Date.now()}`).set(message);
+
+            
+
+            // Очищаємо поле вводу
+
+            if (isTeacher(currentUser)) {
+
+                document.getElementById("teacher-message-input").value = "";
+
+            } else {
+
+                document.getElementById("student-message-input").value = "";
+
+            }
+
+        } catch (e) {
+
+            console.error("sendMessage error", e);
+
+            alert("Помилка відправки повідомлення");
+
+        }
+
+    }
+
+
+
+    function showChatView() {
+
+        if (!currentUser) {
+
+            document.getElementById("chat-login-prompt").style.display = "block";
+
+            document.getElementById("teacher-view").style.display = "none";
+
+            document.getElementById("student-view").style.display = "none";
+
+            return;
+
+        }
+
+        
+
+        document.getElementById("chat-login-prompt").style.display = "none";
+
+        
+
+        if (isTeacher(currentUser)) {
+
+            document.getElementById("teacher-view").style.display = "block";
+
+            document.getElementById("student-view").style.display = "none";
+
+            loadStudentsList();
+
+        } else {
+
+            document.getElementById("teacher-view").style.display = "none";
+
+            document.getElementById("student-view").style.display = "block";
+
+            loadChatMessages(currentUser.uid);
+
+        }
+
+    }
+
+
+
+    // Обробники подій для чату
+
+    const teacherSendBtn = document.getElementById("teacher-send-btn");
+
+    const studentSendBtn = document.getElementById("student-send-btn");
+
+    const backToStudentsBtn = document.getElementById("back-to-students");
+
+
+
+    if (teacherSendBtn) {
+
+        teacherSendBtn.addEventListener("click", () => {
+
+            const input = document.getElementById("teacher-message-input");
+
+            sendMessage(input.value, "teacher");
+
+        });
+
+        
+
+        document.getElementById("teacher-message-input")?.addEventListener("keypress", (e) => {
+
+            if (e.key === "Enter") {
+
+                teacherSendBtn.click();
+
+            }
+
+        });
+
+    }
+
+
+
+    if (studentSendBtn) {
+
+        studentSendBtn.addEventListener("click", () => {
+
+            const input = document.getElementById("student-message-input");
+
+            sendMessage(input.value, "student");
+
+        });
+
+        
+
+        document.getElementById("student-message-input")?.addEventListener("keypress", (e) => {
+
+            if (e.key === "Enter") {
+
+                studentSendBtn.click();
+
+            }
+
+        });
+
+    }
+
+
+
+    if (backToStudentsBtn) {
+
+        backToStudentsBtn.addEventListener("click", backToStudents);
+
+    }
+
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
