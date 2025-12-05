@@ -1336,6 +1336,612 @@
 
         }
 
+
+
+        /* ========== ЧАТ ВІДЖЕТ ========== */
+
+        .chat-widget {
+
+            position: fixed;
+
+            bottom: 20px;
+
+            right: 20px;
+
+            z-index: 1000;
+
+        }
+
+        .chat-toggle {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(135deg, var(--accent), #8b5cf6);
+
+            border: none;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+
+            transition: transform 0.3s, box-shadow 0.3s;
+
+        }
+
+        .chat-toggle:hover {
+
+            transform: scale(1.1);
+
+            box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5);
+
+        }
+
+        .chat-toggle svg {
+
+            width: 28px;
+
+            height: 28px;
+
+            fill: white;
+
+        }
+
+        .chat-toggle .badge {
+
+            position: absolute;
+
+            top: -5px;
+
+            right: -5px;
+
+            background: #ef4444;
+
+            color: white;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            width: 22px;
+
+            height: 22px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        .chat-box {
+
+            position: absolute;
+
+            bottom: 70px;
+
+            right: 0;
+
+            width: 350px;
+
+            max-width: calc(100vw - 40px);
+
+            height: 450px;
+
+            background: var(--bg-alt);
+
+            border: 1px solid var(--border);
+
+            border-radius: 20px;
+
+            display: none;
+
+            flex-direction: column;
+
+            overflow: hidden;
+
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+
+        }
+
+        .chat-box.open {
+
+            display: flex;
+
+        }
+
+        .chat-header {
+
+            padding: 16px;
+
+            background: linear-gradient(135deg, var(--accent), #8b5cf6);
+
+            color: white;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+        .chat-header h3 {
+
+            margin: 0;
+
+            font-size: 16px;
+
+        }
+
+        .chat-header .online {
+
+            font-size: 12px;
+
+            opacity: 0.8;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+        }
+
+        .chat-header .online::before {
+
+            content: '';
+
+            width: 8px;
+
+            height: 8px;
+
+            background: #22c55e;
+
+            border-radius: 50%;
+
+        }
+
+        .chat-close {
+
+            background: none;
+
+            border: none;
+
+            color: white;
+
+            font-size: 24px;
+
+            cursor: pointer;
+
+            opacity: 0.8;
+
+        }
+
+        .chat-close:hover {
+
+            opacity: 1;
+
+        }
+
+        .chat-messages {
+
+            flex: 1;
+
+            overflow-y: auto;
+
+            padding: 16px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+        }
+
+        .chat-input-area {
+
+            padding: 12px;
+
+            border-top: 1px solid var(--border);
+
+            display: flex;
+
+            gap: 8px;
+
+        }
+
+        .chat-input-area input {
+
+            flex: 1;
+
+            margin-bottom: 0;
+
+            border-radius: 20px;
+
+            padding: 10px 16px;
+
+        }
+
+        .chat-input-area button {
+
+            width: 44px;
+
+            height: 44px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background: var(--accent);
+
+            color: white;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        .chat-login-msg {
+
+            text-align: center;
+
+            padding: 20px;
+
+            color: var(--muted);
+
+        }
+
+
+
+        /* ========== ТАРИФИ ========== */
+
+        .tariffs-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 20px;
+
+            margin-top: 24px;
+
+        }
+
+        .tariff-card {
+
+            background: var(--bg-alt);
+
+            border: 2px solid var(--border);
+
+            border-radius: 24px;
+
+            padding: 28px 24px;
+
+            position: relative;
+
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+
+        }
+
+        .tariff-card:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+        }
+
+        .tariff-card.recommended {
+
+            border-color: var(--accent);
+
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.1) 0%, var(--bg-alt) 100%);
+
+        }
+
+        .tariff-card.recommended::before {
+
+            content: '⭐ РЕКОМЕНДОВАНО';
+
+            position: absolute;
+
+            top: -12px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            background: linear-gradient(90deg, var(--accent), #8b5cf6);
+
+            color: white;
+
+            padding: 6px 16px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+
+        }
+
+        .tariff-badge {
+
+            display: inline-block;
+
+            padding: 4px 12px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            margin-bottom: 12px;
+
+        }
+
+        .tariff-badge.bestseller {
+
+            background: #f59e0b33;
+
+            color: #f59e0b;
+
+        }
+
+        .tariff-badge.economy {
+
+            background: #22c55e33;
+
+            color: #22c55e;
+
+        }
+
+        .tariff-badge.starter {
+
+            background: #8b5cf633;
+
+            color: #a78bfa;
+
+        }
+
+        .tariff-badge.free {
+
+            background: #06b6d433;
+
+            color: #22d3ee;
+
+        }
+
+        .tariff-title {
+
+            font-size: 22px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+
+        }
+
+        .tariff-lessons {
+
+            font-size: 14px;
+
+            color: var(--muted);
+
+            margin-bottom: 16px;
+
+        }
+
+        .tariff-price {
+
+            display: flex;
+
+            align-items: baseline;
+
+            gap: 8px;
+
+            margin-bottom: 8px;
+
+        }
+
+        .tariff-price .amount {
+
+            font-size: 36px;
+
+            font-weight: 800;
+
+            color: #22c55e;
+
+        }
+
+        .tariff-price .per {
+
+            font-size: 14px;
+
+            color: var(--muted);
+
+        }
+
+        .tariff-total {
+
+            font-size: 13px;
+
+            color: var(--muted);
+
+            margin-bottom: 20px;
+
+            padding: 8px 12px;
+
+            background: var(--bg-deep);
+
+            border-radius: 8px;
+
+            display: inline-block;
+
+        }
+
+        .tariff-total strong {
+
+            color: var(--text);
+
+        }
+
+        .tariff-features {
+
+            list-style: none;
+
+            padding: 0;
+
+            margin: 0 0 20px 0;
+
+        }
+
+        .tariff-features li {
+
+            padding: 10px 0;
+
+            border-bottom: 1px solid var(--border);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 14px;
+
+            color: var(--muted);
+
+        }
+
+        .tariff-features li:last-child {
+
+            border-bottom: none;
+
+        }
+
+        .tariff-features li::before {
+
+            content: '✓';
+
+            color: #22c55e;
+
+            font-weight: bold;
+
+            font-size: 16px;
+
+        }
+
+        .tariff-btn {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            font-weight: 600;
+
+            font-size: 15px;
+
+            transition: all 0.3s;
+
+        }
+
+        .tariff-card.recommended .tariff-btn {
+
+            background: linear-gradient(90deg, var(--accent), #8b5cf6);
+
+        }
+
+        .tariff-card.free-trial {
+
+            border-style: dashed;
+
+        }
+
+        .tariff-card.free-trial .tariff-price .amount {
+
+            color: #22d3ee;
+
+        }
+
+        .discount-badge {
+
+            background: #ef4444;
+
+            color: white;
+
+            padding: 2px 8px;
+
+            border-radius: 4px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            margin-left: 8px;
+
+        }
+
+        .compare-hint {
+
+            text-align: center;
+
+            margin-top: 24px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+        }
+
+
+
+        /* Request form */
+
+        .request-form {
+
+            background: var(--bg-deep);
+
+            border: 1px solid var(--border);
+
+            border-radius: 16px;
+
+            padding: 24px;
+
+            margin-top: 32px;
+
+        }
+
+        .request-form h3 {
+
+            margin-top: 0;
+
+        }
+
     </style>
 
 </head>
@@ -1954,109 +2560,181 @@
 
 
 
-        <!-- КУРСИ -->
+        <!-- ТАРИФИ -->
 
         <section class="page" id="page-courses">
 
-            <h1>Онлайн курси 📚</h1>
+            <h1>Тарифи на навчання 📚</h1>
 
-            <p>Обери курс, оплати і отримай миттєвий доступ до матеріалів та тестів!</p>
+            <p>Обери свій тариф і почни вивчати англійську вже сьогодні!</p>
 
 
 
-            <div class="cards" style="margin-top:24px;">
+            <div class="tariffs-grid">
 
-                <!-- Початковий курс -->
+                <!-- Пробний урок -->
 
-                <div class="course-card" id="course-beginner-card">
+                <div class="tariff-card free-trial" id="tariff-trial-card">
 
-                    <div id="course-beginner-status"></div>
+                    <span class="tariff-badge free">🎁 БЕЗКОШТОВНО</span>
 
-                    <span class="tag">A1–A2</span>
+                    <h3 class="tariff-title">Пробний урок</h3>
 
-                    <h3 style="font-size:20px;margin:12px 0 8px;">Початковий курс</h3>
+                    <p class="tariff-lessons">30–50 хвилин знайомства</p>
 
-                    <p style="margin-bottom:0;">Ідеально для тих, хто тільки починає вивчати англійську.</p>
+                    <div class="tariff-price">
 
-                    <div class="course-price">10 ₴ <span>/ доступ назавжди</span></div>
+                        <span class="amount">0€</span>
 
-                    <ul class="course-features">
+                    </div>
 
-                        <li>Базова граматика з поясненнями</li>
+                    <div class="tariff-total">Без зобов'язань</div>
 
-                        <li>Словниковий запас 500+ слів</li>
+                    <ul class="tariff-features">
 
-                        <li>Інтерактивні тести</li>
+                        <li>Знайомство з викладачем</li>
 
-                        <li>Аудіо матеріали</li>
+                        <li>Визначення вашого рівня</li>
 
-                        <li>Доступ до Telegram чату</li>
+                        <li>Міні-демо заняття</li>
+
+                        <li>Відповіді на всі питання</li>
 
                     </ul>
 
-                    <button class="btn btn-primary" style="width:100%;" onclick="openPurchaseModal('beginner', 'Початковий курс', 10)">
+                    <button class="btn btn-outline tariff-btn" onclick="openTariffModal('trial', 'Пробний урок', 0, 1)">
 
-                        Купити курс
+                        Записатись безкоштовно
 
                     </button>
-
-                    <div id="course-beginner-access" style="display:none;margin-top:12px;">
-
-                        <a href="#" class="btn btn-success" style="width:100%;" id="beginner-access-link" target="_blank">
-
-                            🎓 Перейти до курсу
-
-                        </a>
-
-                    </div>
 
                 </div>
 
 
 
-                <!-- Продвинутий курс -->
+                <!-- 8 занять -->
 
-                <div class="course-card premium" id="course-advanced-card">
+                <div class="tariff-card" id="tariff-8-card">
 
-                    <div id="course-advanced-status"></div>
+                    <span class="tariff-badge starter">🚀 ДЛЯ СТАРТУ</span>
 
-                    <span class="tag" style="background:#f59e0b;">B1–B2</span>
+                    <h3 class="tariff-title">8 занять</h3>
 
-                    <h3 style="font-size:20px;margin:12px 0 8px;">Продвинутий курс</h3>
+                    <p class="tariff-lessons">~2 місяці навчання</p>
 
-                    <p style="margin-bottom:0;">Для тих, хто хоче вийти на новий рівень володіння мовою.</p>
+                    <div class="tariff-price">
 
-                    <div class="course-price">10 ₴ <span>/ доступ назавжди</span></div>
+                        <span class="amount">10€</span>
 
-                    <ul class="course-features">
+                        <span class="per">/ урок</span>
 
-                        <li>Складна граматика (часи, умовні)</li>
+                    </div>
 
-                        <li>Словниковий запас 1500+ слів</li>
+                    <div class="tariff-total">Загалом: <strong>80€</strong></div>
 
-                        <li>Розмовна практика</li>
+                    <ul class="tariff-features">
 
-                        <li>Підготовка до іспитів</li>
+                        <li>Доступ до інтерактивної дошки</li>
 
-                        <li>Персональна підтримка</li>
+                        <li>Підтримка 24/7</li>
+
+                        <li>Індивідуальний підхід</li>
 
                     </ul>
 
-                    <button class="btn btn-primary" style="width:100%;background:#f59e0b;" onclick="openPurchaseModal('advanced', 'Продвинутий курс', 10)">
+                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('lessons8', '8 занять', 80, 8)">
 
-                        Купити курс
+                        Обрати тариф
 
                     </button>
 
-                    <div id="course-advanced-access" style="display:none;margin-top:12px;">
+                </div>
 
-                        <a href="#" class="btn btn-success" style="width:100%;" id="advanced-access-link" target="_blank">
 
-                            🎓 Перейти до курсу
 
-                        </a>
+                <!-- 16 занять -->
+
+                <div class="tariff-card" id="tariff-16-card">
+
+                    <span class="tariff-badge bestseller">🔥 БЕСТСЕЛЕР</span>
+
+                    <h3 class="tariff-title">16 занять</h3>
+
+                    <p class="tariff-lessons">~4 місяці навчання</p>
+
+                    <div class="tariff-price">
+
+                        <span class="amount">11€</span>
+
+                        <span class="per">/ урок</span>
 
                     </div>
+
+                    <div class="tariff-total">Загалом: <strong>176€</strong></div>
+
+                    <ul class="tariff-features">
+
+                        <li>PDF «100 розмовних фраз»</li>
+
+                        <li>Доступ до інтерактивної дошки</li>
+
+                        <li>Підтримка 24/7</li>
+
+                        <li>Індивідуальний підхід</li>
+
+                    </ul>
+
+                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('lessons16', '16 занять', 176, 16)">
+
+                        Обрати тариф
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- 32 заняття - РЕКОМЕНДОВАНО -->
+
+                <div class="tariff-card recommended" id="tariff-32-card">
+
+                    <span class="tariff-badge economy">💰 МАКСИМАЛЬНА ЕКОНОМІЯ</span>
+
+                    <h3 class="tariff-title">32 заняття</h3>
+
+                    <p class="tariff-lessons">~8 місяців навчання</p>
+
+                    <div class="tariff-price">
+
+                        <span class="amount">10€</span>
+
+                        <span class="per">/ урок</span>
+
+                        <span class="discount-badge">-9%</span>
+
+                    </div>
+
+                    <div class="tariff-total">Загалом: <strong>320€</strong> <s style="color:var(--muted);font-size:12px;">352€</s></div>
+
+                    <ul class="tariff-features">
+
+                        <li>🎉 Спікінг-клаби 1 раз/2 місяці</li>
+
+                        <li>PDF «100 розмовних фраз»</li>
+
+                        <li>Матеріали та інтерактивна дошка</li>
+
+                        <li>Підтримка 24/7</li>
+
+                        <li>Індивідуальний підхід</li>
+
+                    </ul>
+
+                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('lessons32', '32 заняття', 320, 32)">
+
+                        Обрати тариф
+
+                    </button>
 
                 </div>
 
@@ -2064,9 +2742,37 @@
 
 
 
+            <p class="compare-hint">💡 Порада: чим більше занять — тим вигідніша ціна за урок!</p>
+
+
+
+            <!-- Форма заявки без тарифу -->
+
+            <div class="request-form">
+
+                <h3>📝 Не впевнені який тариф обрати?</h3>
+
+                <p style="color:var(--muted);margin-bottom:16px;">Залиште заявку і я допоможу підібрати оптимальний варіант для вас!</p>
+
+                <div style="display:flex;gap:12px;flex-wrap:wrap;">
+
+                    <input type="text" id="request-name" placeholder="Ваше ім'я" style="flex:1;min-width:200px;">
+
+                    <input type="text" id="request-contact" placeholder="Telegram або телефон" style="flex:1;min-width:200px;">
+
+                    <button class="btn btn-primary" onclick="sendGeneralRequest()">Надіслати заявку</button>
+
+                </div>
+
+                <div id="request-status" style="margin-top:12px;"></div>
+
+            </div>
+
+
+
             <div id="courses-login-prompt" class="card" style="margin-top:24px;display:none;">
 
-                <p>⚠️ Для покупки курсу потрібно увійти в акаунт</p>
+                <p>⚠️ Для оформлення тарифу увійдіть в акаунт або залиште заявку вище</p>
 
                 <a href="#" class="btn btn-primary" onclick="openPage('cabinet');return false;">Увійти / Зареєструватись</a>
 
@@ -2223,6 +2929,160 @@
                 <button class="btn btn-outline" onclick="closePurchaseModal()">Скасувати</button>
 
             </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ЧАТ ВІДЖЕТ -->
+
+<div class="chat-widget" id="chat-widget">
+
+    <div class="chat-box" id="chat-box">
+
+        <div class="chat-header">
+
+            <div>
+
+                <h3>💬 Чат з викладачем</h3>
+
+                <div class="online">Онлайн</div>
+
+            </div>
+
+            <button class="chat-close" onclick="toggleChat()">×</button>
+
+        </div>
+
+        <div class="chat-messages" id="widget-messages">
+
+            <!-- Повідомлення будуть тут -->
+
+        </div>
+
+        <div id="widget-login-msg" class="chat-login-msg" style="display:none;">
+
+            <p>Увійдіть щоб написати повідомлення</p>
+
+            <a href="#" class="btn btn-primary btn-sm" onclick="openPage('cabinet');toggleChat();return false;">Увійти</a>
+
+        </div>
+
+        <div class="chat-input-area" id="widget-input-area">
+
+            <input type="text" id="widget-message-input" placeholder="Напишіть повідомлення...">
+
+            <button onclick="sendWidgetMessage()">
+
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <button class="chat-toggle" onclick="toggleChat()">
+
+        <svg viewBox="0 0 24 24">
+
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+
+        </svg>
+
+        <span class="badge" id="chat-badge" style="display:none;">0</span>
+
+    </button>
+
+</div>
+
+
+
+<!-- МОДАЛЬНЕ ВІКНО ТАРИФУ -->
+
+<div class="modal" id="tariff-modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2 id="tariff-modal-title">Оформити тариф</h2>
+
+            <button class="modal-close" onclick="closeTariffModal()">×</button>
+
+        </div>
+
+        
+
+        <div style="text-align:center;margin-bottom:20px;">
+
+            <div class="course-price" id="tariff-modal-price">320€</div>
+
+            <p style="margin:4px 0;color:var(--muted);font-size:14px;" id="tariff-modal-lessons">32 заняття</p>
+
+        </div>
+
+        
+
+        <div class="payment-card">
+
+            <p style="margin:0;color:var(--muted);font-size:13px;">Переказ на картку</p>
+
+            <div class="payment-card-number">4441 1144 6530 0463</div>
+
+            <button class="copy-btn" onclick="copyCardNumber()">📋 Скопіювати номер</button>
+
+        </div>
+
+        
+
+        <ol class="payment-steps">
+
+            <li>Зробіть переказ на картку вище</li>
+
+            <li>В коментарі вкажіть <strong>ваш email або Telegram</strong></li>
+
+            <li>Натисніть "Я оплатив" нижче</li>
+
+            <li>Протягом 24 годин з вами зв'яжуться</li>
+
+        </ol>
+
+        
+
+        <div style="margin-top:16px;">
+
+            <label>Ваш Telegram або телефон (для зв'язку):</label>
+
+            <input type="text" id="tariff-contact" placeholder="@username або +380...">
+
+        </div>
+
+        
+
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;">
+
+            <a href="monobank://send?to=4441114465300463" class="btn btn-monobank" style="text-align:center;justify-content:center;">
+
+                📱 Відкрити Monobank
+
+            </a>
+
+            <button class="btn btn-success" onclick="confirmTariffPayment()" style="padding:14px;">
+
+                ✅ Я оплатив — надіслати заявку
+
+            </button>
+
+            <button class="btn btn-outline" onclick="closeTariffModal()">Скасувати</button>
 
         </div>
 
@@ -3008,7 +3868,7 @@
 
     // Email вчителя - ЗМІНІТЬ НА СВІЙ EMAIL!
 
-    const TEACHER_EMAIL = "zheniabezzubets@gmail.com"; // <-- ЗМІНІТЬ ЦЕ НА СВІЙ EMAIL!
+    const TEACHER_EMAIL = "teacher@school.com"; // <-- ЗМІНІТЬ ЦЕ НА СВІЙ EMAIL!
 
 
 
@@ -3666,23 +4526,13 @@
 
             
 
-            // Зберігаємо в профілі користувача (це працює завжди)
+            // Зберігаємо в профілі користувача
+
+            console.log("Зберігаємо заявку...", purchase);
 
             await db.ref(`profiles/${currentUser.uid}/purchases/${selectedCourse.courseId}`).set(purchase);
 
-            
-
-            // Також зберігаємо в загальному списку (для адмін-панелі)
-
-            try {
-
-                await db.ref(`purchases/${timestamp}_${currentUser.uid}`).set(purchase);
-
-            } catch (e) {
-
-                console.log("Не вдалося зберегти в purchases (потрібно налаштувати Firebase rules)");
-
-            }
+            console.log("Заявку збережено успішно!");
 
             
 
@@ -3704,7 +4554,7 @@
 
             console.error("confirmPayment error", e);
 
-            alert("Помилка при створенні заявки. Спробуйте ще раз.");
+            alert("Помилка при створенні заявки:\n" + e.message + "\n\nПеревірте Firebase Rules!");
 
         }
 
@@ -4369,6 +5219,292 @@
     });
 
 
+
+    // ========== ЧАТ ВІДЖЕТ ==========
+
+    
+
+    let chatOpen = false;
+
+    let widgetChatListener = null;
+
+    
+
+    function toggleChat() {
+
+        chatOpen = !chatOpen;
+
+        document.getElementById("chat-box").classList.toggle("open", chatOpen);
+
+        
+
+        if (chatOpen && currentUser) {
+
+            loadWidgetChat();
+
+            document.getElementById("widget-login-msg").style.display = "none";
+
+            document.getElementById("widget-input-area").style.display = "flex";
+
+        } else if (chatOpen && !currentUser) {
+
+            document.getElementById("widget-login-msg").style.display = "block";
+
+            document.getElementById("widget-input-area").style.display = "none";
+
+        }
+
+    }
+
+    
+
+    async function loadWidgetChat() {
+
+        if (!currentUser) return;
+
+        
+
+        const messagesDiv = document.getElementById("widget-messages");
+
+        const chatPath = `chats/${currentUser.uid}`;
+
+        
+
+        if (widgetChatListener) {
+
+            db.ref(chatPath).off("value", widgetChatListener);
+
+        }
+
+        
+
+        widgetChatListener = (snap) => {
+
+            messagesDiv.innerHTML = "";
+
+            if (snap.exists()) {
+
+                const messages = snap.val();
+
+                Object.keys(messages).sort().forEach(key => {
+
+                    const msg = messages[key];
+
+                    const div = document.createElement("div");
+
+                    div.className = `message ${msg.from === "teacher" ? "teacher" : "student"}`;
+
+                    div.innerHTML = `<div>${msg.text}</div><div class="message-time">${new Date(msg.timestamp).toLocaleTimeString("uk-UA", {hour: '2-digit', minute: '2-digit'})}</div>`;
+
+                    messagesDiv.appendChild(div);
+
+                });
+
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            } else {
+
+                messagesDiv.innerHTML = '<p style="text-align:center;color:var(--muted);font-size:13px;">Напишіть перше повідомлення! 👋</p>';
+
+            }
+
+        };
+
+        
+
+        db.ref(chatPath).on("value", widgetChatListener);
+
+    }
+
+    
+
+    async function sendWidgetMessage() {
+
+        if (!currentUser) return;
+
+        const input = document.getElementById("widget-message-input");
+
+        const text = input.value.trim();
+
+        if (!text) return;
+
+        
+
+        const chatPath = `chats/${currentUser.uid}`;
+
+        const message = { text: text, from: isTeacher(currentUser) ? "teacher" : "student", timestamp: Date.now() };
+
+        
+
+        try {
+
+            await db.ref(`${chatPath}/${Date.now()}`).set(message);
+
+            input.value = "";
+
+        } catch (e) { console.error("sendWidgetMessage error", e); }
+
+    }
+
+    
+
+    document.getElementById("widget-message-input")?.addEventListener("keypress", (e) => {
+
+        if (e.key === "Enter") sendWidgetMessage();
+
+    });
+
+
+
+    // ========== ТАРИФИ ==========
+
+    
+
+    let selectedTariff = null;
+
+    
+
+    function openTariffModal(tariffId, tariffName, price, lessons) {
+
+        selectedTariff = { tariffId, tariffName, price, lessons };
+
+        document.getElementById("tariff-modal-title").textContent = `Оформити: ${tariffName}`;
+
+        document.getElementById("tariff-modal-price").textContent = price === 0 ? "Безкоштовно" : `${price}€`;
+
+        document.getElementById("tariff-modal-lessons").textContent = lessons === 1 ? "Пробний урок" : `${lessons} занять`;
+
+        document.getElementById("tariff-modal").classList.add("show");
+
+    }
+
+    
+
+    function closeTariffModal() {
+
+        document.getElementById("tariff-modal").classList.remove("show");
+
+        selectedTariff = null;
+
+    }
+
+    
+
+    async function confirmTariffPayment() {
+
+        const contact = document.getElementById("tariff-contact").value.trim();
+
+        if (!contact) { alert("Вкажіть ваш Telegram або телефон для зв'язку!"); return; }
+
+        
+
+        const tariffRequest = {
+
+            tariffId: selectedTariff.tariffId,
+
+            tariffName: selectedTariff.tariffName,
+
+            price: selectedTariff.price,
+
+            lessons: selectedTariff.lessons,
+
+            contact: contact,
+
+            userEmail: currentUser?.email || "не авторизований",
+
+            userId: currentUser?.uid || "guest",
+
+            status: "pending",
+
+            timestamp: Date.now()
+
+        };
+
+        
+
+        try {
+
+            await db.ref(`tariffRequests/${Date.now()}`).set(tariffRequest);
+
+            if (currentUser) {
+
+                await db.ref(`profiles/${currentUser.uid}/tariffRequests/${selectedTariff.tariffId}`).set(tariffRequest);
+
+            }
+
+            closeTariffModal();
+
+            document.getElementById("tariff-contact").value = "";
+
+            alert(selectedTariff.price === 0 
+
+                ? "✅ Заявку на пробний урок надіслано!\n\nМи зв'яжемось з вами найближчим часом." 
+
+                : "✅ Заявку надіслано!\n\nПісля перевірки оплати ми зв'яжемось з вами.");
+
+        } catch (e) {
+
+            console.error("confirmTariffPayment error", e);
+
+            alert("Помилка при відправці заявки. Спробуйте ще раз.");
+
+        }
+
+    }
+
+    
+
+    async function sendGeneralRequest() {
+
+        const name = document.getElementById("request-name").value.trim();
+
+        const contact = document.getElementById("request-contact").value.trim();
+
+        const statusDiv = document.getElementById("request-status");
+
+        
+
+        if (!name || !contact) { statusDiv.innerHTML = '<span class="error">Заповніть всі поля!</span>'; return; }
+
+        
+
+        try {
+
+            await db.ref(`generalRequests/${Date.now()}`).set({
+
+                name, contact, type: "general",
+
+                userEmail: currentUser?.email || "не авторизований",
+
+                timestamp: Date.now()
+
+            });
+
+            document.getElementById("request-name").value = "";
+
+            document.getElementById("request-contact").value = "";
+
+            statusDiv.innerHTML = '<span class="success">✅ Заявку надіслано!</span>';
+
+            setTimeout(() => { statusDiv.innerHTML = ""; }, 5000);
+
+        } catch (e) {
+
+            statusDiv.innerHTML = '<span class="error">Помилка. Спробуйте ще раз.</span>';
+
+        }
+
+    }
+
+    
+
+    document.getElementById("tariff-modal")?.addEventListener("click", function(e) {
+
+        if (e.target === this) closeTariffModal();
+
+    });
+
+
 </script>
 
 
@@ -4376,4 +5512,3 @@
 </body>
 
 </html>
-
