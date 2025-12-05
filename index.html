@@ -912,6 +912,430 @@
 
         }
 
+
+
+        /* Курси */
+
+        .course-card {
+
+            background: linear-gradient(135deg, var(--bg-alt) 0%, var(--bg-deep) 100%);
+
+            padding: 24px;
+
+            border-radius: 20px;
+
+            border: 1px solid var(--border);
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+        .course-card::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            right: 0;
+
+            height: 4px;
+
+            background: linear-gradient(90deg, var(--accent), #8b5cf6);
+
+        }
+
+        .course-card.premium::before {
+
+            background: linear-gradient(90deg, #f59e0b, #ef4444);
+
+        }
+
+        .course-price {
+
+            font-size: 32px;
+
+            font-weight: 700;
+
+            color: #22c55e;
+
+            margin: 16px 0;
+
+        }
+
+        .course-price span {
+
+            font-size: 16px;
+
+            color: var(--muted);
+
+        }
+
+        .course-features {
+
+            list-style: none;
+
+            padding: 0;
+
+            margin: 16px 0;
+
+        }
+
+        .course-features li {
+
+            padding: 8px 0;
+
+            color: var(--muted);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+        .course-features li::before {
+
+            content: '✓';
+
+            color: #22c55e;
+
+            font-weight: bold;
+
+        }
+
+        .course-status {
+
+            display: inline-block;
+
+            padding: 4px 12px;
+
+            border-radius: 999px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            margin-bottom: 12px;
+
+        }
+
+        .course-status.purchased {
+
+            background: #22c55e33;
+
+            color: #22c55e;
+
+        }
+
+        .course-status.pending {
+
+            background: #f59e0b33;
+
+            color: #f59e0b;
+
+        }
+
+
+
+        /* Модальне вікно */
+
+        .modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0,0,0,0.7);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            z-index: 100;
+
+            padding: 20px;
+
+        }
+
+        .modal.show {
+
+            display: flex;
+
+        }
+
+        .modal-content {
+
+            background: var(--bg-alt);
+
+            border-radius: 20px;
+
+            border: 1px solid var(--border);
+
+            max-width: 480px;
+
+            width: 100%;
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            padding: 24px;
+
+        }
+
+        .modal-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+        }
+
+        .modal-header h2 {
+
+            margin: 0;
+
+        }
+
+        .modal-close {
+
+            background: none;
+
+            border: none;
+
+            color: var(--muted);
+
+            font-size: 24px;
+
+            cursor: pointer;
+
+            padding: 4px;
+
+        }
+
+        .modal-close:hover {
+
+            color: var(--text);
+
+        }
+
+        .payment-card {
+
+            background: var(--bg-deep);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            padding: 16px;
+
+            text-align: center;
+
+            margin: 16px 0;
+
+        }
+
+        .payment-card-number {
+
+            font-family: monospace;
+
+            font-size: 20px;
+
+            letter-spacing: 2px;
+
+            color: var(--text);
+
+            margin: 8px 0;
+
+        }
+
+        .copy-btn {
+
+            background: var(--accent);
+
+            color: white;
+
+            border: none;
+
+            padding: 6px 12px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 12px;
+
+            margin-top: 8px;
+
+        }
+
+        .copy-btn:hover {
+
+            background: #2563eb;
+
+        }
+
+        .payment-steps {
+
+            text-align: left;
+
+            margin: 16px 0;
+
+        }
+
+        .payment-steps li {
+
+            padding: 8px 0;
+
+            color: var(--muted);
+
+        }
+
+        .payment-steps li strong {
+
+            color: var(--text);
+
+        }
+
+        .btn-success {
+
+            background: #22c55e;
+
+            color: white;
+
+        }
+
+        .btn-success:hover {
+
+            background: #16a34a;
+
+        }
+
+        .btn-monobank {
+
+            background: #000;
+
+            color: white;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+        .btn-monobank:hover {
+
+            background: #1a1a1a;
+
+        }
+
+
+
+        /* Адмін панель */
+
+        .purchase-item {
+
+            background: var(--bg-deep);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            padding: 16px;
+
+            margin-bottom: 12px;
+
+        }
+
+        .purchase-item.pending {
+
+            border-left: 4px solid #f59e0b;
+
+        }
+
+        .purchase-item.approved {
+
+            border-left: 4px solid #22c55e;
+
+        }
+
+        .purchase-actions {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-top: 12px;
+
+        }
+
+        .btn-sm {
+
+            padding: 6px 12px;
+
+            font-size: 12px;
+
+        }
+
+        .btn-approve {
+
+            background: #22c55e;
+
+            color: white;
+
+        }
+
+        .btn-reject {
+
+            background: #ef4444;
+
+            color: white;
+
+        }
+
+
+
+        /* Мої курси */
+
+        .my-course-item {
+
+            background: var(--bg-deep);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            padding: 16px;
+
+            margin-bottom: 12px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+
+        }
+
     </style>
 
 </head>
@@ -956,11 +1380,15 @@
 
             <button class="nav-button active" data-page="home">🏠 Головна</button>
 
+            <button class="nav-button" data-page="courses">📚 Курси</button>
+
             <button class="nav-button" data-page="tips">💡 Підказки</button>
 
             <button class="nav-button" data-page="cabinet">👤 Особистий кабінет</button>
 
             <button class="nav-button" data-page="chat">💬 Чат з вчителем</button>
+
+            <button class="nav-button" data-page="admin" id="admin-nav-btn" style="display:none;">⚙️ Адмін</button>
 
         </div>
 
@@ -1416,6 +1844,28 @@
 
             </div>
 
+
+
+            <!-- Мої курси -->
+
+            <div class="card" id="my-courses-section" style="display:none;margin-top:20px;">
+
+                <h2 style="margin-top:0;">🎓 Мої курси</h2>
+
+                <div id="my-courses-list">
+
+                    <p style="color:var(--muted);">У вас поки немає куплених курсів.</p>
+
+                </div>
+
+                <a href="#" class="btn btn-outline" onclick="openPage('courses');return false;" style="margin-top:12px;">
+
+                    Переглянути всі курси
+
+                </a>
+
+            </div>
+
         </section>
 
 
@@ -1504,7 +1954,275 @@
 
 
 
+        <!-- КУРСИ -->
+
+        <section class="page" id="page-courses">
+
+            <h1>Онлайн курси 📚</h1>
+
+            <p>Обери курс, оплати і отримай миттєвий доступ до матеріалів та тестів!</p>
+
+
+
+            <div class="cards" style="margin-top:24px;">
+
+                <!-- Початковий курс -->
+
+                <div class="course-card" id="course-beginner-card">
+
+                    <div id="course-beginner-status"></div>
+
+                    <span class="tag">A1–A2</span>
+
+                    <h3 style="font-size:20px;margin:12px 0 8px;">Початковий курс</h3>
+
+                    <p style="margin-bottom:0;">Ідеально для тих, хто тільки починає вивчати англійську.</p>
+
+                    <div class="course-price">10 ₴ <span>/ доступ назавжди</span></div>
+
+                    <ul class="course-features">
+
+                        <li>Базова граматика з поясненнями</li>
+
+                        <li>Словниковий запас 500+ слів</li>
+
+                        <li>Інтерактивні тести</li>
+
+                        <li>Аудіо матеріали</li>
+
+                        <li>Доступ до Telegram чату</li>
+
+                    </ul>
+
+                    <button class="btn btn-primary" style="width:100%;" onclick="openPurchaseModal('beginner', 'Початковий курс', 10)">
+
+                        Купити курс
+
+                    </button>
+
+                    <div id="course-beginner-access" style="display:none;margin-top:12px;">
+
+                        <a href="#" class="btn btn-success" style="width:100%;" id="beginner-access-link" target="_blank">
+
+                            🎓 Перейти до курсу
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Продвинутий курс -->
+
+                <div class="course-card premium" id="course-advanced-card">
+
+                    <div id="course-advanced-status"></div>
+
+                    <span class="tag" style="background:#f59e0b;">B1–B2</span>
+
+                    <h3 style="font-size:20px;margin:12px 0 8px;">Продвинутий курс</h3>
+
+                    <p style="margin-bottom:0;">Для тих, хто хоче вийти на новий рівень володіння мовою.</p>
+
+                    <div class="course-price">10 ₴ <span>/ доступ назавжди</span></div>
+
+                    <ul class="course-features">
+
+                        <li>Складна граматика (часи, умовні)</li>
+
+                        <li>Словниковий запас 1500+ слів</li>
+
+                        <li>Розмовна практика</li>
+
+                        <li>Підготовка до іспитів</li>
+
+                        <li>Персональна підтримка</li>
+
+                    </ul>
+
+                    <button class="btn btn-primary" style="width:100%;background:#f59e0b;" onclick="openPurchaseModal('advanced', 'Продвинутий курс', 10)">
+
+                        Купити курс
+
+                    </button>
+
+                    <div id="course-advanced-access" style="display:none;margin-top:12px;">
+
+                        <a href="#" class="btn btn-success" style="width:100%;" id="advanced-access-link" target="_blank">
+
+                            🎓 Перейти до курсу
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div id="courses-login-prompt" class="card" style="margin-top:24px;display:none;">
+
+                <p>⚠️ Для покупки курсу потрібно увійти в акаунт</p>
+
+                <a href="#" class="btn btn-primary" onclick="openPage('cabinet');return false;">Увійти / Зареєструватись</a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- АДМІН ПАНЕЛЬ -->
+
+        <section class="page" id="page-admin">
+
+            <h1>Адмін панель ⚙️</h1>
+
+            <p>Тут ви можете підтверджувати оплати та керувати доступом до курсів.</p>
+
+
+
+            <div class="card" style="margin-top:20px;">
+
+                <h2 style="margin-top:0;">Заявки на оплату</h2>
+
+                <div id="pending-purchases">
+
+                    <p style="color:var(--muted);">Завантаження...</p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="card" style="margin-top:20px;">
+
+                <h2 style="margin-top:0;">Підтверджені покупки</h2>
+
+                <div id="approved-purchases">
+
+                    <p style="color:var(--muted);">Завантаження...</p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="card" style="margin-top:20px;">
+
+                <h2 style="margin-top:0;">Налаштування курсів</h2>
+
+                <p style="font-size:13px;color:var(--muted);">Посилання на матеріали курсів (учні побачать їх після підтвердження оплати)</p>
+
+                
+
+                <label style="margin-top:12px;">Посилання на Початковий курс:</label>
+
+                <input type="text" id="beginner-course-link" placeholder="https://..." value="">
+
+                
+
+                <label>Посилання на Продвинутий курс:</label>
+
+                <input type="text" id="advanced-course-link" placeholder="https://..." value="">
+
+                
+
+                <button class="btn btn-primary" onclick="saveCourseLinks()" style="margin-top:8px;">Зберегти посилання</button>
+
+            </div>
+
+        </section>
+
+
+
     </main>
+
+
+
+    <!-- МОДАЛЬНЕ ВІКНО ОПЛАТИ -->
+
+    <div class="modal" id="purchase-modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="modal-course-name">Купити курс</h2>
+
+                <button class="modal-close" onclick="closePurchaseModal()">&times;</button>
+
+            </div>
+
+            
+
+            <div class="payment-card">
+
+                <p style="margin:0;color:var(--muted);font-size:13px;">Переказ на картку Monobank</p>
+
+                <div class="payment-card-number" id="payment-card-display">4441 1144 6530 0463</div>
+
+                <button class="copy-btn" onclick="copyCardNumber()">📋 Скопіювати номер</button>
+
+            </div>
+
+            
+
+            <div style="text-align:center;margin:16px 0;">
+
+                <div class="course-price" id="modal-price">10 ₴</div>
+
+                <p style="margin:4px 0;color:var(--muted);font-size:13px;">Сума до оплати</p>
+
+            </div>
+
+            
+
+            <ol class="payment-steps">
+
+                <li>Відкрийте <strong>Monobank</strong> або інший банк</li>
+
+                <li>Зробіть переказ на картку вище</li>
+
+                <li>Вкажіть суму: <strong id="modal-price-text">10 грн</strong></li>
+
+                <li>В коментарі напишіть: <strong id="modal-comment">ваш email</strong></li>
+
+                <li>Натисніть кнопку "Я оплатив" нижче</li>
+
+            </ol>
+
+            
+
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;">
+
+                <a href="https://send.monobank.ua/" target="_blank" class="btn btn-monobank" style="text-align:center;justify-content:center;">
+
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+
+                    Відкрити Monobank
+
+                </a>
+
+                <button class="btn btn-success" onclick="confirmPayment()" style="padding:14px;">
+
+                    ✅ Я оплатив — надіслати заявку
+
+                </button>
+
+                <button class="btn btn-outline" onclick="closePurchaseModal()">Скасувати</button>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -2286,7 +3004,7 @@
 
     // Email вчителя - ЗМІНІТЬ НА СВІЙ EMAIL!
 
-    const TEACHER_EMAIL = "rabtor17da@gmail.com"; // <-- ЗМІНІТЬ ЦЕ НА СВІЙ EMAIL!
+    const TEACHER_EMAIL = "teacher@school.com"; // <-- ЗМІНІТЬ ЦЕ НА СВІЙ EMAIL!
 
 
 
@@ -2743,6 +3461,840 @@
     }
 
 
+
+    // ========== СИСТЕМА КУРСІВ ТА ОПЛАТИ ==========
+
+    
+
+    const CARD_NUMBER = "4441114465300463";
+
+    const CARD_NUMBER_DISPLAY = "4441 1144 6530 0463";
+
+    
+
+    // Дані курсів
+
+    const COURSES = {
+
+        beginner: {
+
+            id: 'beginner',
+
+            name: 'Початковий курс',
+
+            price: 10,
+
+            level: 'A1-A2'
+
+        },
+
+        advanced: {
+
+            id: 'advanced',
+
+            name: 'Продвинутий курс',
+
+            price: 10,
+
+            level: 'B1-B2'
+
+        }
+
+    };
+
+    
+
+    let selectedCourse = null;
+
+    
+
+    // Відкрити модальне вікно покупки
+
+    function openPurchaseModal(courseId, courseName, price) {
+
+        if (!currentUser) {
+
+            document.getElementById("courses-login-prompt").style.display = "block";
+
+            return;
+
+        }
+
+        
+
+        selectedCourse = { courseId, courseName, price };
+
+        
+
+        document.getElementById("modal-course-name").textContent = `Купити: ${courseName}`;
+
+        document.getElementById("modal-price").textContent = `${price} ₴`;
+
+        document.getElementById("modal-price-text").textContent = `${price} грн`;
+
+        document.getElementById("modal-comment").textContent = currentUser.email;
+
+        
+
+        document.getElementById("purchase-modal").classList.add("show");
+
+    }
+
+    
+
+    // Закрити модальне вікно
+
+    function closePurchaseModal() {
+
+        document.getElementById("purchase-modal").classList.remove("show");
+
+        selectedCourse = null;
+
+    }
+
+    
+
+    // Скопіювати номер картки
+
+    function copyCardNumber() {
+
+        navigator.clipboard.writeText(CARD_NUMBER).then(() => {
+
+            const btn = document.querySelector(".copy-btn");
+
+            btn.textContent = "✅ Скопійовано!";
+
+            setTimeout(() => {
+
+                btn.textContent = "📋 Скопіювати номер";
+
+            }, 2000);
+
+        });
+
+    }
+
+    
+
+    // Підтвердити оплату (створити заявку)
+
+    async function confirmPayment() {
+
+        if (!currentUser || !selectedCourse) {
+
+            alert("Помилка: увійдіть в акаунт");
+
+            return;
+
+        }
+
+        
+
+        try {
+
+            // Перевірити чи вже є заявка або покупка
+
+            const existingSnap = await db.ref(`purchases`).orderByChild('userId').equalTo(currentUser.uid).get();
+
+            if (existingSnap.exists()) {
+
+                const purchases = existingSnap.val();
+
+                for (const key in purchases) {
+
+                    if (purchases[key].courseId === selectedCourse.courseId && 
+
+                        (purchases[key].status === 'pending' || purchases[key].status === 'approved')) {
+
+                        if (purchases[key].status === 'pending') {
+
+                            alert("Ви вже надіслали заявку на цей курс. Очікуйте підтвердження!");
+
+                        } else {
+
+                            alert("Ви вже маєте доступ до цього курсу!");
+
+                        }
+
+                        closePurchaseModal();
+
+                        return;
+
+                    }
+
+                }
+
+            }
+
+            
+
+            // Отримати ім'я користувача
+
+            let userName = currentUser.email;
+
+            if (currentProfile && currentProfile.firstname) {
+
+                userName = `${currentProfile.firstname} ${currentProfile.lastname || ''}`.trim();
+
+            }
+
+            
+
+            // Створити заявку
+
+            const purchase = {
+
+                userId: currentUser.uid,
+
+                userEmail: currentUser.email,
+
+                userName: userName,
+
+                courseId: selectedCourse.courseId,
+
+                courseName: selectedCourse.courseName,
+
+                price: selectedCourse.price,
+
+                status: 'pending',
+
+                timestamp: Date.now(),
+
+                createdAt: new Date().toISOString()
+
+            };
+
+            
+
+            await db.ref(`purchases/${Date.now()}_${currentUser.uid}`).set(purchase);
+
+            
+
+            closePurchaseModal();
+
+            alert("✅ Заявку надіслано!\n\nВчитель перевірить оплату і надасть вам доступ. Зазвичай це займає до 24 годин.");
+
+            
+
+            // Оновити статус курсу
+
+            updateCourseStatus(selectedCourse.courseId, 'pending');
+
+            loadMyCourses();
+
+            
+
+        } catch (e) {
+
+            console.error("confirmPayment error", e);
+
+            alert("Помилка при створенні заявки. Спробуйте ще раз.");
+
+        }
+
+    }
+
+    
+
+    // Оновити статус курсу на сторінці
+
+    function updateCourseStatus(courseId, status) {
+
+        const statusDiv = document.getElementById(`course-${courseId}-status`);
+
+        const accessDiv = document.getElementById(`course-${courseId}-access`);
+
+        const card = document.getElementById(`course-${courseId}-card`);
+
+        const buyBtn = card?.querySelector('button[onclick*="openPurchaseModal"]');
+
+        
+
+        if (status === 'pending') {
+
+            statusDiv.innerHTML = '<span class="course-status pending">⏳ Очікує підтвердження</span>';
+
+            if (buyBtn) buyBtn.style.display = 'none';
+
+            accessDiv.style.display = 'none';
+
+        } else if (status === 'approved') {
+
+            statusDiv.innerHTML = '<span class="course-status purchased">✅ Куплено</span>';
+
+            if (buyBtn) buyBtn.style.display = 'none';
+
+            accessDiv.style.display = 'block';
+
+        } else {
+
+            statusDiv.innerHTML = '';
+
+            if (buyBtn) buyBtn.style.display = 'block';
+
+            accessDiv.style.display = 'none';
+
+        }
+
+    }
+
+    
+
+    // Завантажити статус курсів користувача
+
+    async function loadUserCourses() {
+
+        if (!currentUser) return;
+
+        
+
+        try {
+
+            const snap = await db.ref('purchases').orderByChild('userId').equalTo(currentUser.uid).get();
+
+            
+
+            // Скидаємо статуси
+
+            updateCourseStatus('beginner', null);
+
+            updateCourseStatus('advanced', null);
+
+            
+
+            if (!snap.exists()) return;
+
+            
+
+            const purchases = snap.val();
+
+            
+
+            // Завантажити посилання на курси
+
+            const linksSnap = await db.ref('settings/courseLinks').get();
+
+            const links = linksSnap.exists() ? linksSnap.val() : {};
+
+            
+
+            for (const key in purchases) {
+
+                const p = purchases[key];
+
+                updateCourseStatus(p.courseId, p.status);
+
+                
+
+                // Якщо курс куплено - встановити посилання
+
+                if (p.status === 'approved' && links[p.courseId]) {
+
+                    const linkEl = document.getElementById(`${p.courseId}-access-link`);
+
+                    if (linkEl) {
+
+                        linkEl.href = links[p.courseId];
+
+                    }
+
+                }
+
+            }
+
+        } catch (e) {
+
+            console.error("loadUserCourses error", e);
+
+        }
+
+    }
+
+    
+
+    // Завантажити мої курси в кабінеті
+
+    async function loadMyCourses() {
+
+        if (!currentUser) return;
+
+        
+
+        const myCoursesSection = document.getElementById("my-courses-section");
+
+        const myCoursesDiv = document.getElementById("my-courses-list");
+
+        
+
+        try {
+
+            const snap = await db.ref('purchases').orderByChild('userId').equalTo(currentUser.uid).get();
+
+            
+
+            if (!snap.exists()) {
+
+                myCoursesSection.style.display = "block";
+
+                myCoursesDiv.innerHTML = '<p style="color:var(--muted);">У вас поки немає куплених курсів. <a href="#" onclick="openPage(\'courses\');return false;">Переглянути курси</a></p>';
+
+                return;
+
+            }
+
+            
+
+            const purchases = snap.val();
+
+            const linksSnap = await db.ref('settings/courseLinks').get();
+
+            const links = linksSnap.exists() ? linksSnap.val() : {};
+
+            
+
+            let html = '';
+
+            let hasCourses = false;
+
+            
+
+            for (const key in purchases) {
+
+                const p = purchases[key];
+
+                hasCourses = true;
+
+                
+
+                let statusBadge = '';
+
+                let accessBtn = '';
+
+                
+
+                if (p.status === 'pending') {
+
+                    statusBadge = '<span class="course-status pending">⏳ Очікує підтвердження</span>';
+
+                } else if (p.status === 'approved') {
+
+                    statusBadge = '<span class="course-status purchased">✅ Доступ відкрито</span>';
+
+                    if (links[p.courseId]) {
+
+                        accessBtn = `<a href="${links[p.courseId]}" target="_blank" class="btn btn-success btn-sm">Перейти до курсу</a>`;
+
+                    } else {
+
+                        accessBtn = '<span style="color:var(--muted);font-size:12px;">Посилання скоро буде додано</span>';
+
+                    }
+
+                }
+
+                
+
+                html += `
+
+                    <div class="my-course-item">
+
+                        <div>
+
+                            <strong>${p.courseName}</strong>
+
+                            <div style="margin-top:4px;">${statusBadge}</div>
+
+                        </div>
+
+                        <div>${accessBtn}</div>
+
+                    </div>
+
+                `;
+
+            }
+
+            
+
+            myCoursesSection.style.display = "block";
+
+            myCoursesDiv.innerHTML = hasCourses ? html : '<p style="color:var(--muted);">У вас поки немає куплених курсів.</p>';
+
+            
+
+        } catch (e) {
+
+            console.error("loadMyCourses error", e);
+
+        }
+
+    }
+
+    
+
+    // ========== АДМІН ПАНЕЛЬ ==========
+
+    
+
+    // Показати адмін кнопку для вчителя
+
+    function checkAdminAccess() {
+
+        const adminBtn = document.getElementById("admin-nav-btn");
+
+        if (currentUser && isTeacher(currentUser)) {
+
+            adminBtn.style.display = "block";
+
+        } else {
+
+            adminBtn.style.display = "none";
+
+        }
+
+    }
+
+    
+
+    // Завантажити заявки (адмін)
+
+    async function loadPurchases() {
+
+        if (!currentUser || !isTeacher(currentUser)) return;
+
+        
+
+        const pendingDiv = document.getElementById("pending-purchases");
+
+        const approvedDiv = document.getElementById("approved-purchases");
+
+        
+
+        try {
+
+            const snap = await db.ref('purchases').orderByChild('timestamp').get();
+
+            
+
+            if (!snap.exists()) {
+
+                pendingDiv.innerHTML = '<p style="color:var(--muted);">Немає заявок</p>';
+
+                approvedDiv.innerHTML = '<p style="color:var(--muted);">Немає підтверджених покупок</p>';
+
+                return;
+
+            }
+
+            
+
+            const purchases = snap.val();
+
+            let pendingHtml = '';
+
+            let approvedHtml = '';
+
+            let pendingCount = 0;
+
+            let approvedCount = 0;
+
+            
+
+            // Сортуємо по даті (нові зверху)
+
+            const sorted = Object.entries(purchases).sort((a, b) => b[1].timestamp - a[1].timestamp);
+
+            
+
+            for (const [key, p] of sorted) {
+
+                const date = new Date(p.timestamp).toLocaleString('uk-UA');
+
+                
+
+                if (p.status === 'pending') {
+
+                    pendingCount++;
+
+                    pendingHtml += `
+
+                        <div class="purchase-item pending">
+
+                            <div><strong>${p.userName || p.userEmail}</strong></div>
+
+                            <div style="font-size:13px;color:var(--muted);">${p.userEmail}</div>
+
+                            <div style="margin-top:8px;">
+
+                                <strong>${p.courseName}</strong> — ${p.price} грн
+
+                            </div>
+
+                            <div style="font-size:12px;color:var(--muted);margin-top:4px;">${date}</div>
+
+                            <div class="purchase-actions">
+
+                                <button class="btn btn-approve btn-sm" onclick="approvePurchase('${key}')">✅ Підтвердити</button>
+
+                                <button class="btn btn-reject btn-sm" onclick="rejectPurchase('${key}')">❌ Відхилити</button>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                } else if (p.status === 'approved') {
+
+                    approvedCount++;
+
+                    approvedHtml += `
+
+                        <div class="purchase-item approved">
+
+                            <div><strong>${p.userName || p.userEmail}</strong></div>
+
+                            <div style="font-size:13px;color:var(--muted);">${p.userEmail}</div>
+
+                            <div style="margin-top:8px;">
+
+                                <strong>${p.courseName}</strong> — ${p.price} грн
+
+                            </div>
+
+                            <div style="font-size:12px;color:var(--muted);margin-top:4px;">Підтверджено: ${date}</div>
+
+                        </div>
+
+                    `;
+
+                }
+
+            }
+
+            
+
+            pendingDiv.innerHTML = pendingCount > 0 ? pendingHtml : '<p style="color:var(--muted);">Немає нових заявок</p>';
+
+            approvedDiv.innerHTML = approvedCount > 0 ? approvedHtml : '<p style="color:var(--muted);">Немає підтверджених покупок</p>';
+
+            
+
+        } catch (e) {
+
+            console.error("loadPurchases error", e);
+
+        }
+
+    }
+
+    
+
+    // Підтвердити покупку
+
+    async function approvePurchase(purchaseKey) {
+
+        if (!confirm("Підтвердити оплату?")) return;
+
+        
+
+        try {
+
+            await db.ref(`purchases/${purchaseKey}/status`).set('approved');
+
+            await db.ref(`purchases/${purchaseKey}/approvedAt`).set(Date.now());
+
+            alert("✅ Покупку підтверджено! Учень отримав доступ.");
+
+            loadPurchases();
+
+        } catch (e) {
+
+            console.error("approvePurchase error", e);
+
+            alert("Помилка при підтвердженні");
+
+        }
+
+    }
+
+    
+
+    // Відхилити покупку
+
+    async function rejectPurchase(purchaseKey) {
+
+        if (!confirm("Відхилити заявку? (якщо оплата не надійшла)")) return;
+
+        
+
+        try {
+
+            await db.ref(`purchases/${purchaseKey}/status`).set('rejected');
+
+            alert("Заявку відхилено.");
+
+            loadPurchases();
+
+        } catch (e) {
+
+            console.error("rejectPurchase error", e);
+
+            alert("Помилка при відхиленні");
+
+        }
+
+    }
+
+    
+
+    // Зберегти посилання на курси
+
+    async function saveCourseLinks() {
+
+        const beginnerLink = document.getElementById("beginner-course-link").value.trim();
+
+        const advancedLink = document.getElementById("advanced-course-link").value.trim();
+
+        
+
+        try {
+
+            await db.ref('settings/courseLinks').set({
+
+                beginner: beginnerLink,
+
+                advanced: advancedLink
+
+            });
+
+            alert("✅ Посилання збережено!");
+
+        } catch (e) {
+
+            console.error("saveCourseLinks error", e);
+
+            alert("Помилка при збереженні");
+
+        }
+
+    }
+
+    
+
+    // Завантажити посилання на курси (адмін)
+
+    async function loadCourseLinks() {
+
+        try {
+
+            const snap = await db.ref('settings/courseLinks').get();
+
+            if (snap.exists()) {
+
+                const links = snap.val();
+
+                document.getElementById("beginner-course-link").value = links.beginner || '';
+
+                document.getElementById("advanced-course-link").value = links.advanced || '';
+
+            }
+
+        } catch (e) {
+
+            console.error("loadCourseLinks error", e);
+
+        }
+
+    }
+
+    
+
+    // Оновлення при зміні сторінки
+
+    const originalOpenPage = openPage;
+
+    openPage = function(pageName) {
+
+        originalOpenPage(pageName);
+
+        
+
+        if (pageName === 'courses' && currentUser) {
+
+            loadUserCourses();
+
+            document.getElementById("courses-login-prompt").style.display = "none";
+
+        } else if (pageName === 'courses' && !currentUser) {
+
+            document.getElementById("courses-login-prompt").style.display = "block";
+
+        }
+
+        
+
+        if (pageName === 'admin' && currentUser && isTeacher(currentUser)) {
+
+            loadPurchases();
+
+            loadCourseLinks();
+
+        }
+
+    };
+
+    
+
+    // Додаткова перевірка при авторизації
+
+    const originalShowCabinet = showCabinet;
+
+    showCabinet = async function(user) {
+
+        await originalShowCabinet(user);
+
+        checkAdminAccess();
+
+        loadMyCourses();
+
+        
+
+        // Якщо на сторінці курсів - оновити
+
+        if (document.getElementById("page-courses")?.classList.contains("page-active")) {
+
+            loadUserCourses();
+
+            document.getElementById("courses-login-prompt").style.display = "none";
+
+        }
+
+    };
+
+    
+
+    // Закрити модальне вікно при кліку поза ним
+
+    document.getElementById("purchase-modal").addEventListener("click", function(e) {
+
+        if (e.target === this) {
+
+            closePurchaseModal();
+
+        }
+
+    });
+
+    
+
+    // Ініціалізація при завантаженні
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+        checkAdminAccess();
+
+    });
 
 
 </script>
