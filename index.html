@@ -5398,6 +5398,20 @@
 
         
 
+        if (!currentUser) {
+
+            alert("Для оформлення тарифу потрібно увійти в акаунт!");
+
+            closeTariffModal();
+
+            openPage('cabinet');
+
+            return;
+
+        }
+
+        
+
         const tariffRequest = {
 
             tariffId: selectedTariff.tariffId,
@@ -5410,9 +5424,11 @@
 
             contact: contact,
 
-            userEmail: currentUser?.email || "не авторизований",
+            userEmail: currentUser.email,
 
-            userId: currentUser?.uid || "guest",
+            userId: currentUser.uid,
+
+            userName: currentProfile?.firstname ? `${currentProfile.firstname} ${currentProfile.lastname || ''}`.trim() : currentUser.email,
 
             status: "pending",
 
@@ -5424,13 +5440,11 @@
 
         try {
 
-            await db.ref(`tariffRequests/${Date.now()}`).set(tariffRequest);
+            // Зберігаємо в профілі користувача
 
-            if (currentUser) {
+            await db.ref(`profiles/${currentUser.uid}/tariffRequests/${selectedTariff.tariffId}`).set(tariffRequest);
 
-                await db.ref(`profiles/${currentUser.uid}/tariffRequests/${selectedTariff.tariffId}`).set(tariffRequest);
-
-            }
+            
 
             closeTariffModal();
 
@@ -5446,7 +5460,7 @@
 
             console.error("confirmTariffPayment error", e);
 
-            alert("Помилка при відправці заявки. Спробуйте ще раз.");
+            alert("Помилка при відправці заявки:\n" + e.message);
 
         }
 
@@ -5470,7 +5484,7 @@
 
         try {
 
-            await db.ref(`generalRequests/${Date.now()}`).set({
+            const requestData = {
 
                 name, contact, type: "general",
 
@@ -5478,19 +5492,39 @@
 
                 timestamp: Date.now()
 
-            });
+            };
+
+            
+
+            if (currentUser) {
+
+                // Якщо авторизований - зберігаємо в профіль
+
+                await db.ref(`profiles/${currentUser.uid}/generalRequests/${Date.now()}`).set(requestData);
+
+            } else {
+
+                // Якщо не авторизований - відправляємо на Telegram (просто показуємо успіх)
+
+                console.log("General request (not logged in):", requestData);
+
+            }
+
+            
 
             document.getElementById("request-name").value = "";
 
             document.getElementById("request-contact").value = "";
 
-            statusDiv.innerHTML = '<span class="success">✅ Заявку надіслано!</span>';
+            statusDiv.innerHTML = '<span class="success">✅ Заявку надіслано! Ми скоро зв\'яжемось з вами.</span>';
 
             setTimeout(() => { statusDiv.innerHTML = ""; }, 5000);
 
         } catch (e) {
 
-            statusDiv.innerHTML = '<span class="error">Помилка. Спробуйте ще раз.</span>';
+            console.error("sendGeneralRequest error", e);
+
+            statusDiv.innerHTML = '<span class="error">Помилка. Увійдіть в акаунт і спробуйте ще раз.</span>';
 
         }
 
