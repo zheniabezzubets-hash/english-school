@@ -5398,6 +5398,16 @@
 
         
 
+        if (!selectedTariff) {
+
+            alert("Помилка: тариф не обрано. Спробуйте ще раз.");
+
+            return;
+
+        }
+
+        
+
         if (!currentUser) {
 
             alert("Для оформлення тарифу потрібно увійти в акаунт!");
@@ -5412,15 +5422,27 @@
 
         
 
+        // Зберігаємо дані тарифу до закриття модального вікна
+
+        const tariffId = selectedTariff.tariffId;
+
+        const tariffName = selectedTariff.tariffName;
+
+        const price = selectedTariff.price;
+
+        const lessons = selectedTariff.lessons;
+
+        
+
         const tariffRequest = {
 
-            tariffId: selectedTariff.tariffId,
+            tariffId: tariffId,
 
-            tariffName: selectedTariff.tariffName,
+            tariffName: tariffName,
 
-            price: selectedTariff.price,
+            price: price,
 
-            lessons: selectedTariff.lessons,
+            lessons: lessons,
 
             contact: contact,
 
@@ -5442,15 +5464,19 @@
 
             // Зберігаємо в профілі користувача
 
-            await db.ref(`profiles/${currentUser.uid}/tariffRequests/${selectedTariff.tariffId}`).set(tariffRequest);
+            await db.ref(`profiles/${currentUser.uid}/tariffRequests/${tariffId}`).set(tariffRequest);
 
             
 
-            closeTariffModal();
-
             document.getElementById("tariff-contact").value = "";
 
-            alert(selectedTariff.price === 0 
+            document.getElementById("tariff-modal").classList.remove("show");
+
+            selectedTariff = null;
+
+            
+
+            alert(price === 0 
 
                 ? "✅ Заявку на пробний урок надіслано!\n\nМи зв'яжемось з вами найближчим часом." 
 
