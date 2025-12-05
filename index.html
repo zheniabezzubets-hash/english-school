@@ -2202,13 +2202,17 @@
 
             <div style="display:flex;flex-direction:column;gap:10px;margin-top:20px;">
 
-                <a href="https://send.monobank.ua/" target="_blank" class="btn btn-monobank" style="text-align:center;justify-content:center;">
+                <a href="monobank://send?to=4441114465300463" class="btn btn-monobank" style="text-align:center;justify-content:center;">
 
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-
-                    Відкрити Monobank
+                    📱 Відкрити Monobank (на телефоні)
 
                 </a>
+
+                <p style="margin:0;text-align:center;font-size:12px;color:var(--muted);">
+
+                    Або відкрийте банк вручну і зробіть переказ на картку вище
+
+                </p>
 
                 <button class="btn btn-success" onclick="confirmPayment()" style="padding:14px;">
 
@@ -3004,7 +3008,7 @@
 
     // Email вчителя - ЗМІНІТЬ НА СВІЙ EMAIL!
 
-    const TEACHER_EMAIL = "zheniabezzubets@gmail.com"; // <-- ЗМІНІТЬ ЦЕ НА СВІЙ EMAIL!
+    const TEACHER_EMAIL = "teacher@school.com"; // <-- ЗМІНІТЬ ЦЕ НА СВІЙ EMAIL!
 
 
 
@@ -3592,37 +3596,27 @@
 
         try {
 
-            // Перевірити чи вже є заявка або покупка
+            // Перевірити чи вже є заявка в профілі
 
-            const existingSnap = await db.ref(`purchases`).orderByChild('userId').equalTo(currentUser.uid).get();
+            const existingSnap = await db.ref(`profiles/${currentUser.uid}/purchases/${selectedCourse.courseId}`).get();
 
             if (existingSnap.exists()) {
 
-                const purchases = existingSnap.val();
+                const existing = existingSnap.val();
 
-                for (const key in purchases) {
+                if (existing.status === 'pending') {
 
-                    if (purchases[key].courseId === selectedCourse.courseId && 
+                    alert("Ви вже надіслали заявку на цей курс. Очікуйте підтвердження!");
 
-                        (purchases[key].status === 'pending' || purchases[key].status === 'approved')) {
+                } else if (existing.status === 'approved') {
 
-                        if (purchases[key].status === 'pending') {
-
-                            alert("Ви вже надіслали заявку на цей курс. Очікуйте підтвердження!");
-
-                        } else {
-
-                            alert("Ви вже маєте доступ до цього курсу!");
-
-                        }
-
-                        closePurchaseModal();
-
-                        return;
-
-                    }
+                    alert("Ви вже маєте доступ до цього курсу!");
 
                 }
+
+                closePurchaseModal();
+
+                return;
 
             }
 
@@ -3640,9 +3634,15 @@
 
             
 
+            const timestamp = Date.now();
+
+            
+
             // Створити заявку
 
             const purchase = {
+
+                oderId: `${timestamp}_${currentUser.uid}`,
 
                 userId: currentUser.uid,
 
@@ -3658,7 +3658,7 @@
 
                 status: 'pending',
 
-                timestamp: Date.now(),
+                timestamp: timestamp,
 
                 createdAt: new Date().toISOString()
 
@@ -3666,7 +3666,23 @@
 
             
 
-            await db.ref(`purchases/${Date.now()}_${currentUser.uid}`).set(purchase);
+            // Зберігаємо в профілі користувача (це працює завжди)
+
+            await db.ref(`profiles/${currentUser.uid}/purchases/${selectedCourse.courseId}`).set(purchase);
+
+            
+
+            // Також зберігаємо в загальному списку (для адмін-панелі)
+
+            try {
+
+                await db.ref(`purchases/${timestamp}_${currentUser.uid}`).set(purchase);
+
+            } catch (e) {
+
+                console.log("Не вдалося зберегти в purchases (потрібно налаштувати Firebase rules)");
+
+            }
 
             
 
@@ -3750,7 +3766,9 @@
 
         try {
 
-            const snap = await db.ref('purchases').orderByChild('userId').equalTo(currentUser.uid).get();
+            // Читаємо з профілю користувача
+
+            const snap = await db.ref(`profiles/${currentUser.uid}/purchases`).get();
 
             
 
@@ -3778,9 +3796,9 @@
 
             
 
-            for (const key in purchases) {
+            for (const courseId in purchases) {
 
-                const p = purchases[key];
+                const p = purchases[courseId];
 
                 updateCourseStatus(p.courseId, p.status);
 
@@ -3828,7 +3846,9 @@
 
         try {
 
-            const snap = await db.ref('purchases').orderByChild('userId').equalTo(currentUser.uid).get();
+            // Читаємо з профілю користувача
+
+            const snap = await db.ref(`profiles/${currentUser.uid}/purchases`).get();
 
             
 
@@ -3972,11 +3992,13 @@
 
         try {
 
-            const snap = await db.ref('purchases').orderByChild('timestamp').get();
+            // Читаємо всі профілі і збираємо покупки
+
+            const profilesSnap = await db.ref('profiles').get();
 
             
 
-            if (!snap.exists()) {
+            if (!profilesSnap.exists()) {
 
                 pendingDiv.innerHTML = '<p style="color:var(--muted);">Немає заявок</p>';
 
@@ -3988,7 +4010,53 @@
 
             
 
-            const purchases = snap.val();
+            const profiles = profilesSnap.val();
+
+            let allPurchases = [];
+
+            
+
+            // Збираємо всі покупки з усіх профілів
+
+            for (const userId in profiles) {
+
+                const profile = profiles[userId];
+
+                if (profile.purchases) {
+
+                    for (const courseId in profile.purchases) {
+
+                        allPurchases.push({
+
+                            ...profile.purchases[courseId],
+
+                            oderId: `${userId}_${courseId}`,
+
+                            userId: userId,
+
+                            courseId: courseId
+
+                        });
+
+                    }
+
+                }
+
+            }
+
+            
+
+            if (allPurchases.length === 0) {
+
+                pendingDiv.innerHTML = '<p style="color:var(--muted);">Немає заявок</p>';
+
+                approvedDiv.innerHTML = '<p style="color:var(--muted);">Немає підтверджених покупок</p>';
+
+                return;
+
+            }
+
+            
 
             let pendingHtml = '';
 
@@ -4002,11 +4070,11 @@
 
             // Сортуємо по даті (нові зверху)
 
-            const sorted = Object.entries(purchases).sort((a, b) => b[1].timestamp - a[1].timestamp);
+            allPurchases.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
 
             
 
-            for (const [key, p] of sorted) {
+            for (const p of allPurchases) {
 
                 const date = new Date(p.timestamp).toLocaleString('uk-UA');
 
@@ -4034,9 +4102,9 @@
 
                             <div class="purchase-actions">
 
-                                <button class="btn btn-approve btn-sm" onclick="approvePurchase('${key}')">✅ Підтвердити</button>
+                                <button class="btn btn-approve btn-sm" onclick="approvePurchase('${p.userId}', '${p.courseId}')">✅ Підтвердити</button>
 
-                                <button class="btn btn-reject btn-sm" onclick="rejectPurchase('${key}')">❌ Відхилити</button>
+                                <button class="btn btn-reject btn-sm" onclick="rejectPurchase('${p.userId}', '${p.courseId}')">❌ Відхилити</button>
 
                             </div>
 
@@ -4092,7 +4160,7 @@
 
     // Підтвердити покупку
 
-    async function approvePurchase(purchaseKey) {
+    async function approvePurchase(userId, courseId) {
 
         if (!confirm("Підтвердити оплату?")) return;
 
@@ -4100,9 +4168,11 @@
 
         try {
 
-            await db.ref(`purchases/${purchaseKey}/status`).set('approved');
+            // Оновлюємо в профілі користувача
 
-            await db.ref(`purchases/${purchaseKey}/approvedAt`).set(Date.now());
+            await db.ref(`profiles/${userId}/purchases/${courseId}/status`).set('approved');
+
+            await db.ref(`profiles/${userId}/purchases/${courseId}/approvedAt`).set(Date.now());
 
             alert("✅ Покупку підтверджено! Учень отримав доступ.");
 
@@ -4122,7 +4192,7 @@
 
     // Відхилити покупку
 
-    async function rejectPurchase(purchaseKey) {
+    async function rejectPurchase(userId, courseId) {
 
         if (!confirm("Відхилити заявку? (якщо оплата не надійшла)")) return;
 
@@ -4130,7 +4200,9 @@
 
         try {
 
-            await db.ref(`purchases/${purchaseKey}/status`).set('rejected');
+            // Видаляємо заявку з профілю користувача
+
+            await db.ref(`profiles/${userId}/purchases/${courseId}`).remove();
 
             alert("Заявку відхилено.");
 
@@ -4304,4 +4376,3 @@
 </body>
 
 </html>
-
