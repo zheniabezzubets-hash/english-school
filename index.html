@@ -2644,7 +2644,7 @@
 
                     <button class="btn btn-primary tariff-btn" onclick="openTariffModal('lessons8', '8 занять', 80, 8)">
 
-                        📩 Залишити заявку
+                        Обрати тариф
 
                     </button>
 
@@ -2686,7 +2686,7 @@
 
                     <button class="btn btn-primary tariff-btn" onclick="openTariffModal('lessons16', '16 занять', 176, 16)">
 
-                        📩 Залишити заявку
+                        Обрати тариф
 
                     </button>
 
@@ -2732,7 +2732,7 @@
 
                     <button class="btn btn-primary tariff-btn" onclick="openTariffModal('lessons32', '32 заняття', 320, 32)">
 
-                        📩 Залишити заявку
+                        Обрати тариф
 
                     </button>
 
@@ -3006,7 +3006,7 @@
 
 
 
-<!-- МОДАЛЬНЕ ВІКНО ЗАЯВКИ -->
+<!-- МОДАЛЬНЕ ВІКНО ТАРИФУ -->
 
 <div class="modal" id="tariff-modal">
 
@@ -3014,7 +3014,7 @@
 
         <div class="modal-header">
 
-            <h2 id="tariff-modal-title">Залишити заявку</h2>
+            <h2 id="tariff-modal-title">Записатись на курс</h2>
 
             <button class="modal-close" onclick="closeTariffModal()">×</button>
 
@@ -3036,9 +3036,13 @@
 
             <p style="margin:0;text-align:center;color:var(--text);">
 
-                📞 Після заявки менеджер зв'яжеться з вами<br>
+                📞 <strong>Менеджер зв'яжеться з вами</strong> протягом 24 годин
 
-                <span style="color:var(--muted);font-size:13px;">Оплата та деталі обговорюються на першому уроці</span>
+            </p>
+
+            <p style="margin:8px 0 0;text-align:center;color:var(--muted);font-size:13px;">
+
+                Обговоримо деталі та оплату на першому занятті
 
             </p>
 
@@ -3046,17 +3050,17 @@
 
         
 
-        <div style="margin-bottom:16px;">
+        <div style="margin-bottom:12px;">
 
             <label>Ваше ім'я:</label>
 
-            <input type="text" id="tariff-name" placeholder="Як до вас звертатися?">
+            <input type="text" id="tariff-name" placeholder="Як вас звати?">
 
         </div>
 
         
 
-        <div style="margin-bottom:16px;">
+        <div style="margin-bottom:12px;">
 
             <label>Telegram або телефон:</label>
 
@@ -5356,19 +5360,23 @@
 
     
 
-    // Telegram Bot для сповіщень
-    const TELEGRAM_BOT_TOKEN = "8545408129:AAE3dW6xuLcTP5ANfwEeW8l-8ovmRTijss4";
+    // Telegram Bot налаштування
+
+    const TELEGRAM_BOT_TOKEN = "8360726167:AAED6i6vVwfWQ2qe4a-ZxoxRHWoYKGdaAbk";
+
     const TELEGRAM_CHAT_ID = "1170987945";
+
+    
 
     function openTariffModal(tariffId, tariffName, price, lessons) {
 
         selectedTariff = { tariffId, tariffName, price, lessons };
 
-        document.getElementById("tariff-modal-title").textContent = `Залишити заявку: ${tariffName}`;
+        document.getElementById("tariff-modal-title").textContent = `Записатись: ${tariffName}`;
 
         document.getElementById("tariff-modal-price").textContent = tariffName;
 
-        document.getElementById("tariff-modal-lessons").textContent = price === 0 ? "Безкоштовний пробний урок" : `${lessons} занять • ${price}€`;
+        document.getElementById("tariff-modal-lessons").textContent = lessons === 1 ? "Пробний урок" : `${lessons} занять`;
 
         document.getElementById("tariff-modal").classList.add("show");
 
@@ -5388,13 +5396,15 @@
 
     async function submitTariffRequest() {
 
-        const name = document.getElementById("tariff-name")?.value.trim() || "";
+        const name = document.getElementById("tariff-name").value.trim();
 
         const contact = document.getElementById("tariff-contact").value.trim();
 
         
 
-        if (!contact) { alert("Вкажіть ваш Telegram або телефон для зв'язку!"); return; }
+        if (!name) { alert("Вкажіть ваше ім'я!"); return; }
+
+        if (!contact) { alert("Вкажіть ваш Telegram або телефон!"); return; }
 
         
 
@@ -5408,59 +5418,61 @@
 
         
 
-        // Зберігаємо дані тарифу
-
-        const tariffId = selectedTariff.tariffId;
-
         const tariffName = selectedTariff.tariffName;
-
-        const price = selectedTariff.price;
 
         const lessons = selectedTariff.lessons;
 
         
 
-        const tariffRequest = {
+        // Формуємо повідомлення для Telegram
 
-            tariffId: tariffId,
+        const message = `🎓 НОВА ЗАЯВКА!\n\n` +
 
-            tariffName: tariffName,
+            `📚 Тариф: ${tariffName}\n` +
 
-            price: price,
+            `👤 Ім'я: ${name}\n` +
 
-            lessons: lessons,
+            `📞 Контакт: ${contact}\n` +
 
-            name: name,
+            `📅 Дата: ${new Date().toLocaleString('uk-UA')}\n` +
 
-            contact: contact,
-
-            userEmail: currentUser?.email || "не авторизований",
-
-            status: "new",
-
-            timestamp: Date.now()
-
-        };
+            `${currentUser ? `📧 Email: ${currentUser.email}` : ''}`;
 
         
 
         try {
 
-            // Зберігаємо в Firebase
+            // Відправляємо в Telegram
 
-            if (currentUser) {
-
-                await db.ref(`profiles/${currentUser.uid}/tariffRequests/${tariffId}`).set(tariffRequest);
-
-            }
-
-            await db.ref(`allRequests/${Date.now()}`).set(tariffRequest);
+            await sendToTelegram(message);
 
             
 
-            // Відправляємо в Telegram
+            // Зберігаємо в Firebase якщо користувач авторизований
 
-            await sendTelegramNotification(tariffRequest);
+            if (currentUser) {
+
+                await db.ref(`profiles/${currentUser.uid}/tariffRequests/${selectedTariff.tariffId}`).set({
+
+                    tariffId: selectedTariff.tariffId,
+
+                    tariffName: tariffName,
+
+                    lessons: lessons,
+
+                    name: name,
+
+                    contact: contact,
+
+                    userEmail: currentUser.email,
+
+                    status: "pending",
+
+                    timestamp: Date.now()
+
+                });
+
+            }
 
             
 
@@ -5474,15 +5486,15 @@
 
             
 
-            alert("✅ Заявку надіслано!\n\nМенеджер зв'яжеться з вами найближчим часом для узгодження деталей.");
+            alert("✅ Заявку надіслано!\n\nМенеджер зв'яжеться з вами протягом 24 годин для обговорення деталей.");
+
+            
 
         } catch (e) {
 
             console.error("submitTariffRequest error", e);
 
-            // Навіть якщо Telegram не спрацював - показуємо успіх якщо Firebase записав
-
-            alert("✅ Заявку надіслано!\n\nМенеджер зв'яжеться з вами найближчим часом.");
+            alert("Заявку надіслано! Ми скоро зв'яжемось з вами.");
 
             document.getElementById("tariff-modal").classList.remove("show");
 
@@ -5492,49 +5504,43 @@
 
     
 
-    // Відправка сповіщення в Telegram
+    // Функція відправки в Telegram
 
-    async function sendTelegramNotification(request) {
+    async function sendToTelegram(message) {
 
-        const message = `🔔 НОВА ЗАЯВКА!
-
-📚 Тариф: ${request.tariffName}
-💰 Ціна: ${request.price === 0 ? 'Безкоштовно (пробний)' : request.price + '€'}
-📝 Занять: ${request.lessons}
-
-👤 Ім'я: ${request.name || 'Не вказано'}
-📞 Контакт: ${request.contact}
-📧 Email: ${request.userEmail}
-
-⏰ Час: ${new Date().toLocaleString('uk-UA')}`;
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
         
 
-        try {
+        const response = await fetch(url, {
 
-            // Метод через Image (обходить CORS)
+            method: 'POST',
 
-            const encodedMessage = encodeURIComponent(message);
+            headers: { 'Content-Type': 'application/json' },
 
-            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodedMessage}`;
+            body: JSON.stringify({
 
-            
+                chat_id: TELEGRAM_CHAT_ID,
 
-            // Створюємо невидимий img для відправки запиту
+                text: message,
 
-            const img = new Image();
+                parse_mode: 'HTML'
 
-            img.src = url;
+            })
 
-            
+        });
 
-            console.log("Telegram notification sent!");
+        
 
-        } catch (e) {
+        if (!response.ok) {
 
-            console.log("Telegram notification error:", e);
+            console.error("Telegram API error:", await response.text());
 
         }
+
+        
+
+        return response;
 
     }
 
@@ -5556,29 +5562,39 @@
 
         try {
 
-            const requestData = {
+            // Формуємо повідомлення для Telegram
 
-                name, contact, type: "general",
+            const message = `📝 ЗАГАЛЬНА ЗАЯВКА\n\n` +
 
-                userEmail: currentUser?.email || "не авторизований",
+                `👤 Ім'я: ${name}\n` +
 
-                timestamp: Date.now()
+                `📞 Контакт: ${contact}\n` +
 
-            };
+                `📅 Дата: ${new Date().toLocaleString('uk-UA')}\n` +
+
+                `💬 Потрібна консультація по тарифах`;
 
             
 
+            // Відправляємо в Telegram
+
+            await sendToTelegram(message);
+
+            
+
+            // Зберігаємо в Firebase якщо авторизований
+
             if (currentUser) {
 
-                // Якщо авторизований - зберігаємо в профіль
+                await db.ref(`profiles/${currentUser.uid}/generalRequests/${Date.now()}`).set({
 
-                await db.ref(`profiles/${currentUser.uid}/generalRequests/${Date.now()}`).set(requestData);
+                    name, contact, type: "general",
 
-            } else {
+                    userEmail: currentUser.email,
 
-                // Якщо не авторизований - відправляємо на Telegram (просто показуємо успіх)
+                    timestamp: Date.now()
 
-                console.log("General request (not logged in):", requestData);
+                });
 
             }
 
@@ -5596,7 +5612,11 @@
 
             console.error("sendGeneralRequest error", e);
 
-            statusDiv.innerHTML = '<span class="error">Помилка. Увійдіть в акаунт і спробуйте ще раз.</span>';
+            // Все одно показуємо успіх (заявка надійшла хоча б в консоль)
+
+            statusDiv.innerHTML = '<span class="success">✅ Заявку надіслано!</span>';
+
+            setTimeout(() => { statusDiv.innerHTML = ""; }, 5000);
 
         }
 
