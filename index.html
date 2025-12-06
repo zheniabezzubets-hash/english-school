@@ -2722,8 +2722,6 @@
 
                     <ul class="tariff-features">
 
-                        <li>🎁 Перше заняття безкоштовне</li>
-
                         <li>🎉 Спікінг-клаби 1 раз/2 місяці</li>
 
                         <li>PDF «100 розмовних фраз»</li>
@@ -5368,7 +5366,7 @@
 
     // Telegram Bot налаштування
 
-    const TELEGRAM_BOT_TOKEN = "8360726167:AAED6i6vVwfWQ2qe4a-ZxoxRHWoYKGdaAbk";
+    const TELEGRAM_BOT_TOKEN = "8545408129:AAE3dW6xuLcTP5ANfwEeW8l-8ovmRTijss4";
 
     const TELEGRAM_CHAT_ID = "1170987945";
 
@@ -5500,9 +5498,13 @@
 
             console.error("submitTariffRequest error", e);
 
-            alert("Заявку надіслано! Ми скоро зв'яжемось з вами.");
+            // Показуємо детальну помилку для дебагу
 
-            document.getElementById("tariff-modal").classList.remove("show");
+            const errorMsg = e.message || "Невідома помилка";
+
+            console.error("Деталі помилки:", errorMsg);
+
+            alert("⚠️ Помилка відправки заявки:\n" + errorMsg + "\n\nСпробуйте ще раз або зв'яжіться напряму.");
 
         }
 
@@ -5518,35 +5520,59 @@
 
         
 
-        const response = await fetch(url, {
+        try {
 
-            method: 'POST',
+            console.log("Відправляю в Telegram...", { chat_id: TELEGRAM_CHAT_ID, message_length: message.length });
 
-            headers: { 'Content-Type': 'application/json' },
+            
 
-            body: JSON.stringify({
+            const response = await fetch(url, {
 
-                chat_id: TELEGRAM_CHAT_ID,
+                method: 'POST',
 
-                text: message,
+                headers: { 'Content-Type': 'application/json' },
 
-                parse_mode: 'HTML'
+                body: JSON.stringify({
 
-            })
+                    chat_id: TELEGRAM_CHAT_ID,
 
-        });
+                    text: message,
 
-        
+                    parse_mode: 'HTML'
 
-        if (!response.ok) {
+                })
 
-            console.error("Telegram API error:", await response.text());
+            });
+
+            
+
+            const result = await response.json();
+
+            
+
+            if (!response.ok) {
+
+                console.error("Telegram API помилка:", result);
+
+                throw new Error(result.description || "Помилка відправки в Telegram");
+
+            }
+
+            
+
+            console.log("✅ Повідомлення відправлено успішно!", result);
+
+            return result;
+
+            
+
+        } catch (e) {
+
+            console.error("Помилка при відправці в Telegram:", e);
+
+            throw e;
 
         }
-
-        
-
-        return response;
 
     }
 
