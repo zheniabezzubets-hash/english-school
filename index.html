@@ -1618,11 +1618,11 @@
 
             display: grid;
 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 
-            gap: 20px;
+            gap: 14px;
 
-            margin-top: 24px;
+            margin-top: 20px;
 
         }
 
@@ -1632,9 +1632,9 @@
 
             border: 2px solid var(--border);
 
-            border-radius: 24px;
+            border-radius: 14px;
 
-            padding: 28px 24px;
+            padding: 16px 14px;
 
             position: relative;
 
@@ -1690,15 +1690,15 @@
 
             display: inline-block;
 
-            padding: 4px 12px;
+            padding: 3px 10px;
 
-            border-radius: 20px;
+            border-radius: 16px;
 
-            font-size: 11px;
+            font-size: 10px;
 
             font-weight: 600;
 
-            margin-bottom: 12px;
+            margin-bottom: 8px;
 
         }
 
@@ -1736,21 +1736,21 @@
 
         .tariff-title {
 
-            font-size: 22px;
+            font-size: 18px;
 
             font-weight: 700;
 
-            margin-bottom: 8px;
+            margin-bottom: 6px;
 
         }
 
         .tariff-lessons {
 
-            font-size: 14px;
+            font-size: 12px;
 
             color: var(--muted);
 
-            margin-bottom: 16px;
+            margin-bottom: 12px;
 
         }
 
@@ -1760,15 +1760,15 @@
 
             align-items: baseline;
 
-            gap: 8px;
+            gap: 6px;
 
-            margin-bottom: 8px;
+            margin-bottom: 6px;
 
         }
 
         .tariff-price .amount {
 
-            font-size: 36px;
+            font-size: 28px;
 
             font-weight: 800;
 
@@ -1778,7 +1778,7 @@
 
         .tariff-price .per {
 
-            font-size: 14px;
+            font-size: 12px;
 
             color: var(--muted);
 
@@ -1786,17 +1786,17 @@
 
         .tariff-total {
 
-            font-size: 13px;
+            font-size: 12px;
 
             color: var(--muted);
 
-            margin-bottom: 20px;
+            margin-bottom: 12px;
 
-            padding: 8px 12px;
+            padding: 6px 10px;
 
             background: var(--bg-deep);
 
-            border-radius: 8px;
+            border-radius: 6px;
 
             display: inline-block;
 
@@ -1814,13 +1814,13 @@
 
             padding: 0;
 
-            margin: 0 0 20px 0;
+            margin: 0 0 12px 0;
 
         }
 
         .tariff-features li {
 
-            padding: 10px 0;
+            padding: 6px 0;
 
             border-bottom: 1px solid var(--border);
 
@@ -1828,9 +1828,9 @@
 
             align-items: center;
 
-            gap: 10px;
+            gap: 8px;
 
-            font-size: 14px;
+            font-size: 13px;
 
             color: var(--muted);
 
@@ -1850,7 +1850,7 @@
 
             font-weight: bold;
 
-            font-size: 16px;
+            font-size: 14px;
 
         }
 
@@ -1858,13 +1858,13 @@
 
             width: 100%;
 
-            padding: 14px;
+            padding: 10px;
 
-            border-radius: 12px;
+            border-radius: 10px;
 
             font-weight: 600;
 
-            font-size: 15px;
+            font-size: 14px;
 
             transition: all 0.3s;
 
@@ -2572,9 +2572,9 @@
 
             <!-- ІНДИВІДУАЛЬНІ ЗАНЯТТЯ -->
 
-            <h2 style="margin-top:32px;margin-bottom:16px;">👤 Індивідуальні заняття</h2>
+            <h2 style="margin-top:24px;margin-bottom:10px;font-size:20px;">👤 Індивідуальні заняття</h2>
 
-            <p style="color:var(--muted);margin-bottom:20px;">Максимальна увага та персоналізований підхід</p>
+            <p style="color:var(--muted);margin-bottom:14px;font-size:13px;">Максимальна увага та персоналізований підхід</p>
 
             
 
@@ -2698,9 +2698,9 @@
 
             <!-- ДУО ЗАНЯТТЯ -->
 
-            <h2 style="margin-top:48px;margin-bottom:16px;">👥 Парні заняття (Дуо)</h2>
+            <h2 style="margin-top:32px;margin-bottom:10px;font-size:20px;">👥 Парні заняття (Дуо)</h2>
 
-            <p style="color:var(--muted);margin-bottom:20px;">Навчайтесь разом з другом або партнером</p>
+            <p style="color:var(--muted);margin-bottom:14px;font-size:13px;">Навчайтесь разом з другом або партнером</p>
 
             
 
@@ -2826,9 +2826,9 @@
 
             <!-- ГРУПОВІ ЗАНЯТТЯ -->
 
-            <h2 style="margin-top:48px;margin-bottom:16px;">👨‍👩‍👧‍👦 Групові заняття (3-5 людей)</h2>
+            <h2 style="margin-top:32px;margin-bottom:10px;font-size:20px;">👨‍👩‍👧‍👦 Групові заняття (3-5 людей)</h2>
 
-            <p style="color:var(--muted);margin-bottom:20px;">Навчайтесь у невеликій групі з регулярною практикою</p>
+            <p style="color:var(--muted);margin-bottom:14px;font-size:13px;">Навчайтесь у невеликій групі з регулярною практикою</p>
 
             
 
@@ -5686,97 +5686,85 @@
 
     // Функція відправки в Telegram
 
+    let isSendingTelegram = false; // Захист від подвійної відправки
+
+    
+
     async function sendToTelegram(message) {
 
-        // Використовуємо GET запит через URL (обхід CORS)
+        // Перевірка чи вже відправляється
 
-        const encodedMessage = encodeURIComponent(message);
+        if (isSendingTelegram) {
 
-        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodedMessage}&parse_mode=HTML`;
+            console.log("⏳ Повідомлення вже відправляється, чекаю...");
+
+            return { ok: false, error: "Вже відправляється" };
+
+        }
+
+        
+
+        isSendingTelegram = true;
 
         
 
         try {
 
-            console.log("Відправляю в Telegram...", { chat_id: TELEGRAM_CHAT_ID, message_length: message.length });
-
-            console.log("URL:", url.replace(TELEGRAM_BOT_TOKEN, "TOKEN_HIDDEN"));
+            console.log("📤 Відправляю в Telegram (один запит)...", { chat_id: TELEGRAM_CHAT_ID, message_length: message.length });
 
             
 
-            // Спробуємо через GET (обхід CORS)
+            // Тільки один POST запит
 
-            const response = await fetch(url, {
+            const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
 
-                method: 'GET',
+                method: 'POST',
 
-                mode: 'no-cors' // Дозволяє запит навіть якщо CORS блокує
+                headers: { 'Content-Type': 'application/json' },
+
+                body: JSON.stringify({
+
+                    chat_id: TELEGRAM_CHAT_ID,
+
+                    text: message,
+
+                    parse_mode: 'HTML'
+
+                })
 
             });
 
             
 
-            // З no-cors ми не можемо прочитати response, але запит піде
+            if (response.ok) {
 
-            console.log("✅ Запит відправлено (no-cors mode)");
+                const result = await response.json();
 
-            
+                console.log("✅ Повідомлення відправлено успішно!", result);
 
-            // Також спробуємо через POST для кращої сумісності
+                isSendingTelegram = false;
 
-            try {
+                return result;
 
-                const postResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+            } else {
 
-                    method: 'POST',
+                const error = await response.json();
 
-                    headers: { 'Content-Type': 'application/json' },
+                console.error("Telegram API помилка:", error);
 
-                    body: JSON.stringify({
+                isSendingTelegram = false;
 
-                        chat_id: TELEGRAM_CHAT_ID,
-
-                        text: message,
-
-                        parse_mode: 'HTML'
-
-                    })
-
-                });
-
-                
-
-                if (postResponse.ok) {
-
-                    const result = await postResponse.json();
-
-                    console.log("✅ Повідомлення відправлено успішно через POST!", result);
-
-                    return result;
-
-                } else {
-
-                    const error = await postResponse.json();
-
-                    console.error("POST помилка:", error);
-
-                }
-
-            } catch (postError) {
-
-                console.log("POST запит не пройшов (можливо CORS), але GET має працювати");
+                throw new Error(error.description || "Помилка відправки в Telegram");
 
             }
-
-            
-
-            return { ok: true, method: 'GET' };
 
             
 
         } catch (e) {
 
             console.error("Помилка при відправці в Telegram:", e);
+
+            isSendingTelegram = false;
 
             // Не кидаємо помилку - заявка все одно збережеться в Firebase
 
