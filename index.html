@@ -1630,11 +1630,11 @@
 
             background: var(--bg-alt);
 
-            border: 2px solid var(--border);
+            border: 1px solid var(--border);
 
-            border-radius: 14px;
+            border-radius: 12px;
 
-            padding: 16px 14px;
+            padding: 14px 12px;
 
             position: relative;
 
@@ -1736,21 +1736,21 @@
 
         .tariff-title {
 
-            font-size: 18px;
+            font-size: 16px;
 
             font-weight: 700;
 
-            margin-bottom: 6px;
+            margin-bottom: 4px;
 
         }
 
         .tariff-lessons {
 
-            font-size: 12px;
+            font-size: 11px;
 
             color: var(--muted);
 
-            margin-bottom: 12px;
+            margin-bottom: 8px;
 
         }
 
@@ -1760,15 +1760,15 @@
 
             align-items: baseline;
 
-            gap: 6px;
+            gap: 4px;
 
-            margin-bottom: 6px;
+            margin-bottom: 4px;
 
         }
 
         .tariff-price .amount {
 
-            font-size: 28px;
+            font-size: 24px;
 
             font-weight: 800;
 
@@ -1786,13 +1786,13 @@
 
         .tariff-total {
 
-            font-size: 12px;
+            font-size: 11px;
 
             color: var(--muted);
 
-            margin-bottom: 12px;
+            margin-bottom: 10px;
 
-            padding: 6px 10px;
+            padding: 4px 8px;
 
             background: var(--bg-deep);
 
@@ -1814,13 +1814,13 @@
 
             padding: 0;
 
-            margin: 0 0 12px 0;
+            margin: 0 0 10px 0;
 
         }
 
         .tariff-features li {
 
-            padding: 6px 0;
+            padding: 4px 0;
 
             border-bottom: 1px solid var(--border);
 
@@ -1828,9 +1828,9 @@
 
             align-items: center;
 
-            gap: 8px;
+            gap: 6px;
 
-            font-size: 13px;
+            font-size: 12px;
 
             color: var(--muted);
 
@@ -1939,6 +1939,172 @@
         .request-form h3 {
 
             margin-top: 0;
+
+        }
+
+
+
+        /* Таблиця тарифів */
+
+        .pricing-table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin: 24px 0;
+
+            background: var(--bg-alt);
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+
+        }
+
+        .pricing-table th {
+
+            background: var(--bg-deep);
+
+            padding: 14px 12px;
+
+            text-align: center;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            color: var(--text);
+
+            border-bottom: 2px solid var(--border);
+
+        }
+
+        .pricing-table th:first-child {
+
+            text-align: left;
+
+            font-size: 14px;
+
+        }
+
+        .pricing-table td {
+
+            padding: 12px;
+
+            text-align: center;
+
+            border-bottom: 1px solid var(--border);
+
+            font-size: 13px;
+
+        }
+
+        .pricing-table tr:last-child td {
+
+            border-bottom: none;
+
+        }
+
+        .pricing-table tr:hover {
+
+            background: var(--bg-deep);
+
+        }
+
+        .pricing-table .row-title {
+
+            text-align: left;
+
+            font-weight: 600;
+
+            color: var(--text);
+
+        }
+
+        .pricing-table .price-total {
+
+            font-weight: 700;
+
+            color: #22c55e;
+
+            font-size: 14px;
+
+        }
+
+        .pricing-table .price-per {
+
+            font-size: 11px;
+
+            color: var(--muted);
+
+            display: block;
+
+            margin-top: 2px;
+
+        }
+
+        .pricing-table .btn-table {
+
+            padding: 6px 12px;
+
+            font-size: 12px;
+
+            margin-top: 4px;
+
+        }
+
+        .format-cards {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 20px;
+
+            margin: 32px 0;
+
+        }
+
+        .format-card {
+
+            background: var(--bg-alt);
+
+            border: 1px dashed var(--border);
+
+            border-radius: 16px;
+
+            padding: 24px;
+
+            text-align: center;
+
+        }
+
+        .format-card h3 {
+
+            color: var(--accent);
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+            margin-bottom: 12px;
+
+            text-transform: uppercase;
+
+        }
+
+        .format-card p {
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
 
         }
 
@@ -2570,125 +2736,41 @@
 
 
 
-            <!-- ІНДИВІДУАЛЬНІ ЗАНЯТТЯ -->
+            <!-- КАРТОЧКИ ФОРМАТІВ -->
 
-            <h2 style="margin-top:24px;margin-bottom:10px;font-size:20px;">👤 Індивідуальні заняття</h2>
+            <div class="format-cards">
 
-            <p style="color:var(--muted);margin-bottom:14px;font-size:13px;">Максимальна увага та персоналізований підхід</p>
+                <div class="format-card">
 
-            
+                    <h3>👤 Індивідуальні заняття</h3>
 
-            <div class="tariffs-grid">
+                    <p>Ідеально для тих, хто хоче отримати максимальну увагу та підтримку викладача. Ви отримаєте персоналізований підхід, де всі матеріали та методики будуть адаптовані саме під ваші потреби та цілі.</p>
 
-                <div class="tariff-card" id="tariff-individual-8">
-
-                    <span class="tariff-badge starter">🚀 ДЛЯ СТАРТУ</span>
-
-                    <h3 class="tariff-title">8 занять</h3>
-
-                    <div class="tariff-price">
-
-                        <span class="amount">12€</span>
-
-                        <span class="per">/ заняття</span>
-
-                    </div>
-
-                    <div class="tariff-total">Загалом: <strong>96€</strong></div>
-
-                    <ul class="tariff-features">
-
-                        <li>Персоналізований підхід</li>
-
-                        <li>Доступ до інтерактивної дошки</li>
-
-                        <li>Підтримка 24/7</li>
-
-                    </ul>
-
-                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('individual8', 'Індивідуальні 8 занять', 96, 8)">
-
-                        Записатись
-
-                    </button>
+                    <button class="btn btn-primary" onclick="scrollToTable('individual')">Переглянути ціни</button>
 
                 </div>
 
 
 
-                <div class="tariff-card" id="tariff-individual-16">
+                <div class="format-card">
 
-                    <span class="tariff-badge bestseller">🔥 БЕСТСЕЛЕР</span>
+                    <h3>👥 Парні заняття</h3>
 
-                    <h3 class="tariff-title">16 занять</h3>
+                    <p>Для тих, хто бажає вивчати мову разом з другом, партнером або будь-ким із схожим рівнем знань і цілями. Такий формат дозволяє зберегти персоналізований підхід, але з додатковою мотивацією та можливістю спільного навчання.</p>
 
-                    <div class="tariff-price">
-
-                        <span class="amount">11€</span>
-
-                        <span class="per">/ заняття</span>
-
-                    </div>
-
-                    <div class="tariff-total">Загалом: <strong>176€</strong></div>
-
-                    <ul class="tariff-features">
-
-                        <li>Персоналізований підхід</li>
-
-                        <li>PDF «100 розмовних фраз»</li>
-
-                        <li>Доступ до інтерактивної дошки</li>
-
-                        <li>Підтримка 24/7</li>
-
-                    </ul>
-
-                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('individual16', 'Індивідуальні 16 занять', 176, 16)">
-
-                        Записатись
-
-                    </button>
+                    <button class="btn btn-primary" onclick="scrollToTable('pair')">Переглянути ціни</button>
 
                 </div>
 
 
 
-                <div class="tariff-card recommended" id="tariff-individual-32">
+                <div class="format-card">
 
-                    <span class="tariff-badge economy">💰 МАКСИМАЛЬНА ЕКОНОМІЯ</span>
+                    <h3>👨‍👩‍👧‍👦 Заняття у міні-групі</h3>
 
-                    <h3 class="tariff-title">32 заняття</h3>
+                    <p>Ідеальний варіант для тих, хто хоче навчатися у невеликій групі з 3-5 учнів. Заняття відбуваються двічі на тиждень у фіксований час, що забезпечує регулярну практику та можливість взаємодії з іншими учасниками.</p>
 
-                    <div class="tariff-price">
-
-                        <span class="amount">10€</span>
-
-                        <span class="per">/ заняття</span>
-
-                    </div>
-
-                    <div class="tariff-total">Загалом: <strong>320€</strong></div>
-
-                    <ul class="tariff-features">
-
-                        <li>Персоналізований підхід</li>
-
-                        <li>Спікінг-клаби 1 раз/2 місяці</li>
-
-                        <li>PDF «100 розмовних фраз»</li>
-
-                        <li>Матеріали та інтерактивна дошка</li>
-
-                        <li>Підтримка 24/7</li>
-
-                    </ul>
-
-                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('individual32', 'Індивідуальні 32 заняття', 320, 32)">
-
-                        Записатись
-
-                    </button>
+                    <button class="btn btn-primary" onclick="scrollToTable('group')">Переглянути ціни</button>
 
                 </div>
 
@@ -2696,225 +2778,199 @@
 
 
 
-            <!-- ДУО ЗАНЯТТЯ -->
+            <!-- ТАБЛИЦЯ ЦІН -->
 
-            <h2 style="margin-top:32px;margin-bottom:10px;font-size:20px;">👥 Парні заняття (Дуо)</h2>
+            <h2 style="margin-top:40px;margin-bottom:20px;">💰 Таблиця цін</h2>
 
-            <p style="color:var(--muted);margin-bottom:14px;font-size:13px;">Навчайтесь разом з другом або партнером</p>
 
-            
 
-            <div class="tariffs-grid">
+            <!-- ІНДИВІДУАЛЬНІ -->
 
-                <div class="tariff-card" id="tariff-duo-8">
+            <h3 style="margin-top:32px;margin-bottom:12px;font-size:18px;" id="table-individual">👤 Індивідуальні заняття</h3>
 
-                    <span class="tariff-badge starter">🚀 ДЛЯ СТАРТУ</span>
+            <table class="pricing-table">
 
-                    <h3 class="tariff-title">8 занять</h3>
+                <thead>
 
-                    <div class="tariff-price">
+                    <tr>
 
-                        <span class="amount">11€</span>
+                        <th>Пакет</th>
 
-                        <span class="per">/ заняття</span>
+                        <th>8 занять</th>
 
-                    </div>
+                        <th>16 занять</th>
 
-                    <div class="tariff-total">Загалом: <strong>88€</strong> (ціна з 1 людини)</div>
+                        <th>32 заняття</th>
 
-                    <ul class="tariff-features">
+                    </tr>
 
-                        <li>Навчання вдвох</li>
+                </thead>
 
-                        <li>Додаткова мотивація</li>
+                <tbody>
 
-                        <li>Доступ до інтерактивної дошки</li>
+                    <tr>
 
-                        <li>Підтримка 24/7</li>
+                        <td class="row-title">Ціна за заняття</td>
 
-                    </ul>
+                        <td><span class="price-total">12€</span></td>
 
-                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('duo8', 'Парні 8 занять', 88, 8)">
+                        <td><span class="price-total">11€</span></td>
 
-                        Записатись
+                        <td><span class="price-total">10€</span></td>
 
-                    </button>
+                    </tr>
 
-                </div>
+                    <tr>
 
+                        <td class="row-title">Загальна вартість</td>
 
+                        <td><span class="price-total">96€</span></td>
 
-                <div class="tariff-card" id="tariff-duo-16">
+                        <td><span class="price-total">176€</span></td>
 
-                    <span class="tariff-badge bestseller">🔥 БЕСТСЕЛЕР</span>
+                        <td><span class="price-total">320€</span></td>
 
-                    <h3 class="tariff-title">16 занять</h3>
+                    </tr>
 
-                    <div class="tariff-price">
+                    <tr>
 
-                        <span class="amount">10€</span>
+                        <td class="row-title"></td>
 
-                        <span class="per">/ заняття</span>
+                        <td><button class="btn btn-primary btn-table" onclick="openTariffModal('individual8', 'Індивідуальні 8 занять', 96, 8)">Записатись</button></td>
 
-                    </div>
+                        <td><button class="btn btn-primary btn-table" onclick="openTariffModal('individual16', 'Індивідуальні 16 занять', 176, 16)">Записатись</button></td>
 
-                    <div class="tariff-total">Загалом: <strong>160€</strong> (ціна з 1 людини)</div>
+                        <td><button class="btn btn-primary btn-table" onclick="openTariffModal('individual32', 'Індивідуальні 32 заняття', 320, 32)">Записатись</button></td>
 
-                    <ul class="tariff-features">
+                    </tr>
 
-                        <li>Навчання вдвох</li>
+                </tbody>
 
-                        <li>PDF «100 розмовних фраз»</li>
+            </table>
 
-                        <li>Доступ до інтерактивної дошки</li>
 
-                        <li>Підтримка 24/7</li>
 
-                    </ul>
+            <!-- ПАРНІ -->
 
-                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('duo16', 'Парні 16 занять', 160, 16)">
+            <h3 style="margin-top:32px;margin-bottom:12px;font-size:18px;" id="table-pair">👥 Парні заняття (ціна з 1 людини)</h3>
 
-                        Записатись
+            <table class="pricing-table">
 
-                    </button>
+                <thead>
 
-                </div>
+                    <tr>
 
+                        <th>Пакет</th>
 
+                        <th>8 занять</th>
 
-                <div class="tariff-card recommended" id="tariff-duo-32">
+                        <th>16 занять</th>
 
-                    <span class="tariff-badge economy">💰 МАКСИМАЛЬНА ЕКОНОМІЯ</span>
+                        <th>32 заняття</th>
 
-                    <h3 class="tariff-title">32 заняття</h3>
+                    </tr>
 
-                    <div class="tariff-price">
+                </thead>
 
-                        <span class="amount">9€</span>
+                <tbody>
 
-                        <span class="per">/ заняття</span>
+                    <tr>
 
-                    </div>
+                        <td class="row-title">Ціна за заняття</td>
 
-                    <div class="tariff-total">Загалом: <strong>288€</strong> (ціна з 1 людини)</div>
+                        <td><span class="price-total">11€</span></td>
 
-                    <ul class="tariff-features">
+                        <td><span class="price-total">10€</span></td>
 
-                        <li>Навчання вдвох</li>
+                        <td><span class="price-total">9€</span></td>
 
-                        <li>Спікінг-клаби 1 раз/2 місяці</li>
+                    </tr>
 
-                        <li>PDF «100 розмовних фраз»</li>
+                    <tr>
 
-                        <li>Матеріали та інтерактивна дошка</li>
+                        <td class="row-title">Загальна вартість</td>
 
-                        <li>Підтримка 24/7</li>
+                        <td><span class="price-total">88€</span></td>
 
-                    </ul>
+                        <td><span class="price-total">160€</span></td>
 
-                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('duo32', 'Парні 32 заняття', 288, 32)">
+                        <td><span class="price-total">288€</span></td>
 
-                        Записатись
+                    </tr>
 
-                    </button>
+                    <tr>
 
-                </div>
+                        <td class="row-title"></td>
 
-            </div>
+                        <td><button class="btn btn-primary btn-table" onclick="openTariffModal('duo8', 'Парні 8 занять', 88, 8)">Записатись</button></td>
 
+                        <td><button class="btn btn-primary btn-table" onclick="openTariffModal('duo16', 'Парні 16 занять', 160, 16)">Записатись</button></td>
 
+                        <td><button class="btn btn-primary btn-table" onclick="openTariffModal('duo32', 'Парні 32 заняття', 288, 32)">Записатись</button></td>
 
-            <!-- ГРУПОВІ ЗАНЯТТЯ -->
+                    </tr>
 
-            <h2 style="margin-top:32px;margin-bottom:10px;font-size:20px;">👨‍👩‍👧‍👦 Групові заняття (3-5 людей)</h2>
+                </tbody>
 
-            <p style="color:var(--muted);margin-bottom:14px;font-size:13px;">Навчайтесь у невеликій групі з регулярною практикою</p>
+            </table>
 
-            
 
-            <div class="tariffs-grid">
 
-                <div class="tariff-card" id="tariff-group-5">
+            <!-- ГРУПОВІ -->
 
-                    <span class="tariff-badge starter">🚀 ДЛЯ СТАРТУ</span>
+            <h3 style="margin-top:32px;margin-bottom:12px;font-size:18px;" id="table-group">👨‍👩‍👧‍👦 Групові заняття (3-5 осіб)</h3>
 
-                    <h3 class="tariff-title">5 занять</h3>
+            <table class="pricing-table">
 
-                    <p class="tariff-lessons">80 хвилин на заняття</p>
+                <thead>
 
-                    <div class="tariff-price">
+                    <tr>
 
-                        <span class="amount">8€</span>
+                        <th>Пакет</th>
 
-                        <span class="per">/ заняття</span>
+                        <th>5 занять (80 хв)</th>
 
-                    </div>
+                        <th>10 занять (100 хв)</th>
 
-                    <div class="tariff-total">Загалом: <strong>40€</strong> (ціна з 1 людини)</div>
+                    </tr>
 
-                    <ul class="tariff-features">
+                </thead>
 
-                        <li>Група 3-5 людей</li>
+                <tbody>
 
-                        <li>80 хвилин на заняття</li>
+                    <tr>
 
-                        <li>Регулярна практика</li>
+                        <td class="row-title">Ціна за заняття</td>
 
-                        <li>Взаємодія з іншими</li>
+                        <td><span class="price-total">8€</span> <span class="price-per">/ людина</span></td>
 
-                    </ul>
+                        <td><span class="price-total">7€</span> <span class="price-per">/ людина</span></td>
 
-                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('group5', 'Групові 5 занять (80 хв)', 40, 5)">
+                    </tr>
 
-                        Записатись
+                    <tr>
 
-                    </button>
+                        <td class="row-title">Загальна вартість</td>
 
-                </div>
+                        <td><span class="price-total">40€</span> <span class="price-per">/ людина</span></td>
 
+                        <td><span class="price-total">70€</span> <span class="price-per">/ людина</span></td>
 
+                    </tr>
 
-                <div class="tariff-card recommended" id="tariff-group-10">
+                    <tr>
 
-                    <span class="tariff-badge bestseller">🔥 БЕСТСЕЛЕР</span>
+                        <td class="row-title"></td>
 
-                    <h3 class="tariff-title">10 занять</h3>
+                        <td><button class="btn btn-primary btn-table" onclick="openTariffModal('group5', 'Групові 5 занять (80 хв)', 40, 5)">Записатись</button></td>
 
-                    <p class="tariff-lessons">100 хвилин на заняття</p>
+                        <td><button class="btn btn-primary btn-table" onclick="openTariffModal('group10', 'Групові 10 занять (100 хв)', 70, 10)">Записатись</button></td>
 
-                    <div class="tariff-price">
+                    </tr>
 
-                        <span class="amount">7€</span>
+                </tbody>
 
-                        <span class="per">/ заняття</span>
-
-                    </div>
-
-                    <div class="tariff-total">Загалом: <strong>70€</strong> (ціна з 1 людини)</div>
-
-                    <ul class="tariff-features">
-
-                        <li>Група 3-5 людей</li>
-
-                        <li>100 хвилин на заняття</li>
-
-                        <li>Більше часу на практику</li>
-
-                        <li>Регулярна практика</li>
-
-                        <li>Взаємодія з іншими</li>
-
-                    </ul>
-
-                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('group10', 'Групові 10 занять (100 хв)', 70, 10)">
-
-                        Записатись
-
-                    </button>
-
-                </div>
-
-            </div>
+            </table>
 
 
 
@@ -5565,6 +5621,36 @@
         document.getElementById("tariff-modal").classList.remove("show");
 
         selectedTariff = null;
+
+    }
+
+    
+
+    // Прокрутка до таблиці
+
+    function scrollToTable(format) {
+
+        const elementId = `table-${format}`;
+
+        const element = document.getElementById(elementId);
+
+        if (element) {
+
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Підсвічуємо на секунду
+
+            element.style.transition = 'background-color 0.3s';
+
+            element.style.backgroundColor = 'rgba(59, 130, 246, 0.2)';
+
+            setTimeout(() => {
+
+                element.style.backgroundColor = '';
+
+            }, 1000);
+
+        }
 
     }
 
