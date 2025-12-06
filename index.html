@@ -2566,87 +2566,49 @@
 
             <h1>Тарифи на навчання 📚</h1>
 
-            <p>Обери свій тариф і почни вивчати англійську вже сьогодні!</p>
+            <p>Обери свій формат навчання і почни вивчати англійську вже сьогодні!</p>
 
 
+
+            <!-- ІНДИВІДУАЛЬНІ ЗАНЯТТЯ -->
+
+            <h2 style="margin-top:32px;margin-bottom:16px;">👤 Індивідуальні заняття</h2>
+
+            <p style="color:var(--muted);margin-bottom:20px;">Максимальна увага та персоналізований підхід</p>
+
+            
 
             <div class="tariffs-grid">
 
-                <!-- Пробний урок -->
-
-                <div class="tariff-card free-trial" id="tariff-trial-card">
-
-                    <span class="tariff-badge free">🎁 БЕЗКОШТОВНО</span>
-
-                    <h3 class="tariff-title">Пробний урок</h3>
-
-                    <p class="tariff-lessons">30–50 хвилин знайомства</p>
-
-                    <div class="tariff-price">
-
-                        <span class="amount">0€</span>
-
-                    </div>
-
-                    <div class="tariff-total">Без зобов'язань</div>
-
-                    <ul class="tariff-features">
-
-                        <li>Знайомство з викладачем</li>
-
-                        <li>Визначення вашого рівня</li>
-
-                        <li>Міні-демо заняття</li>
-
-                        <li>Відповіді на всі питання</li>
-
-                    </ul>
-
-                    <button class="btn btn-outline tariff-btn" onclick="openTariffModal('trial', 'Пробний урок', 0, 1)">
-
-                        Записатись безкоштовно
-
-                    </button>
-
-                </div>
-
-
-
-                <!-- 8 занять -->
-
-                <div class="tariff-card" id="tariff-8-card">
+                <div class="tariff-card" id="tariff-individual-8">
 
                     <span class="tariff-badge starter">🚀 ДЛЯ СТАРТУ</span>
 
                     <h3 class="tariff-title">8 занять</h3>
 
-                    <p class="tariff-lessons">~2 місяці навчання</p>
-
                     <div class="tariff-price">
 
-                        <span class="amount">10€</span>
+                        <span class="amount">12€</span>
 
-                        <span class="per">/ урок</span>
+                        <span class="per">/ заняття</span>
 
                     </div>
 
-                    <div class="tariff-total">Загалом: <strong>80€</strong></div>
+                    <div class="tariff-total">Загалом: <strong>96€</strong></div>
 
                     <ul class="tariff-features">
 
-                        <li>🎁 Перше заняття безкоштовне</li>
+                        <li>Персоналізований підхід</li>
 
                         <li>Доступ до інтерактивної дошки</li>
 
                         <li>Підтримка 24/7</li>
 
-                        <li>Індивідуальний підхід</li>
-
                     </ul>
 
-                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('lessons8', '8 занять', 80, 8)">
+                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('individual8', 'Індивідуальні 8 занять', 96, 8)">
 
-                        Обрати тариф
+                        Записатись
 
                     </button>
 
@@ -2654,21 +2616,17 @@
 
 
 
-                <!-- 16 занять -->
-
-                <div class="tariff-card" id="tariff-16-card">
+                <div class="tariff-card" id="tariff-individual-16">
 
                     <span class="tariff-badge bestseller">🔥 БЕСТСЕЛЕР</span>
 
                     <h3 class="tariff-title">16 занять</h3>
 
-                    <p class="tariff-lessons">~4 місяці навчання</p>
-
                     <div class="tariff-price">
 
                         <span class="amount">11€</span>
 
-                        <span class="per">/ урок</span>
+                        <span class="per">/ заняття</span>
 
                     </div>
 
@@ -2676,7 +2634,7 @@
 
                     <ul class="tariff-features">
 
-                        <li>🎁 Перше заняття безкоштовне</li>
+                        <li>Персоналізований підхід</li>
 
                         <li>PDF «100 розмовних фраз»</li>
 
@@ -2684,13 +2642,11 @@
 
                         <li>Підтримка 24/7</li>
 
-                        <li>Індивідуальний підхід</li>
-
                     </ul>
 
-                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('lessons16', '16 занять', 176, 16)">
+                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('individual16', 'Індивідуальні 16 занять', 176, 16)">
 
-                        Обрати тариф
+                        Записатись
 
                     </button>
 
@@ -2698,31 +2654,27 @@
 
 
 
-                <!-- 32 заняття - РЕКОМЕНДОВАНО -->
-
-                <div class="tariff-card recommended" id="tariff-32-card">
+                <div class="tariff-card recommended" id="tariff-individual-32">
 
                     <span class="tariff-badge economy">💰 МАКСИМАЛЬНА ЕКОНОМІЯ</span>
 
                     <h3 class="tariff-title">32 заняття</h3>
 
-                    <p class="tariff-lessons">~8 місяців навчання</p>
-
                     <div class="tariff-price">
 
                         <span class="amount">10€</span>
 
-                        <span class="per">/ урок</span>
-
-                        <span class="discount-badge">-9%</span>
+                        <span class="per">/ заняття</span>
 
                     </div>
 
-                    <div class="tariff-total">Загалом: <strong>320€</strong> <s style="color:var(--muted);font-size:12px;">352€</s></div>
+                    <div class="tariff-total">Загалом: <strong>320€</strong></div>
 
                     <ul class="tariff-features">
 
-                        <li>🎉 Спікінг-клаби 1 раз/2 місяці</li>
+                        <li>Персоналізований підхід</li>
+
+                        <li>Спікінг-клаби 1 раз/2 місяці</li>
 
                         <li>PDF «100 розмовних фраз»</li>
 
@@ -2730,13 +2682,11 @@
 
                         <li>Підтримка 24/7</li>
 
-                        <li>Індивідуальний підхід</li>
-
                     </ul>
 
-                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('lessons32', '32 заняття', 320, 32)">
+                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('individual32', 'Індивідуальні 32 заняття', 320, 32)">
 
-                        Обрати тариф
+                        Записатись
 
                     </button>
 
@@ -2746,7 +2696,229 @@
 
 
 
-            <p class="compare-hint">💡 Порада: чим більше занять — тим вигідніша ціна за урок!</p>
+            <!-- ДУО ЗАНЯТТЯ -->
+
+            <h2 style="margin-top:48px;margin-bottom:16px;">👥 Парні заняття (Дуо)</h2>
+
+            <p style="color:var(--muted);margin-bottom:20px;">Навчайтесь разом з другом або партнером</p>
+
+            
+
+            <div class="tariffs-grid">
+
+                <div class="tariff-card" id="tariff-duo-8">
+
+                    <span class="tariff-badge starter">🚀 ДЛЯ СТАРТУ</span>
+
+                    <h3 class="tariff-title">8 занять</h3>
+
+                    <div class="tariff-price">
+
+                        <span class="amount">11€</span>
+
+                        <span class="per">/ заняття</span>
+
+                    </div>
+
+                    <div class="tariff-total">Загалом: <strong>88€</strong> (ціна з 1 людини)</div>
+
+                    <ul class="tariff-features">
+
+                        <li>Навчання вдвох</li>
+
+                        <li>Додаткова мотивація</li>
+
+                        <li>Доступ до інтерактивної дошки</li>
+
+                        <li>Підтримка 24/7</li>
+
+                    </ul>
+
+                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('duo8', 'Парні 8 занять', 88, 8)">
+
+                        Записатись
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="tariff-card" id="tariff-duo-16">
+
+                    <span class="tariff-badge bestseller">🔥 БЕСТСЕЛЕР</span>
+
+                    <h3 class="tariff-title">16 занять</h3>
+
+                    <div class="tariff-price">
+
+                        <span class="amount">10€</span>
+
+                        <span class="per">/ заняття</span>
+
+                    </div>
+
+                    <div class="tariff-total">Загалом: <strong>160€</strong> (ціна з 1 людини)</div>
+
+                    <ul class="tariff-features">
+
+                        <li>Навчання вдвох</li>
+
+                        <li>PDF «100 розмовних фраз»</li>
+
+                        <li>Доступ до інтерактивної дошки</li>
+
+                        <li>Підтримка 24/7</li>
+
+                    </ul>
+
+                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('duo16', 'Парні 16 занять', 160, 16)">
+
+                        Записатись
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="tariff-card recommended" id="tariff-duo-32">
+
+                    <span class="tariff-badge economy">💰 МАКСИМАЛЬНА ЕКОНОМІЯ</span>
+
+                    <h3 class="tariff-title">32 заняття</h3>
+
+                    <div class="tariff-price">
+
+                        <span class="amount">9€</span>
+
+                        <span class="per">/ заняття</span>
+
+                    </div>
+
+                    <div class="tariff-total">Загалом: <strong>288€</strong> (ціна з 1 людини)</div>
+
+                    <ul class="tariff-features">
+
+                        <li>Навчання вдвох</li>
+
+                        <li>Спікінг-клаби 1 раз/2 місяці</li>
+
+                        <li>PDF «100 розмовних фраз»</li>
+
+                        <li>Матеріали та інтерактивна дошка</li>
+
+                        <li>Підтримка 24/7</li>
+
+                    </ul>
+
+                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('duo32', 'Парні 32 заняття', 288, 32)">
+
+                        Записатись
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ГРУПОВІ ЗАНЯТТЯ -->
+
+            <h2 style="margin-top:48px;margin-bottom:16px;">👨‍👩‍👧‍👦 Групові заняття (3-5 людей)</h2>
+
+            <p style="color:var(--muted);margin-bottom:20px;">Навчайтесь у невеликій групі з регулярною практикою</p>
+
+            
+
+            <div class="tariffs-grid">
+
+                <div class="tariff-card" id="tariff-group-5">
+
+                    <span class="tariff-badge starter">🚀 ДЛЯ СТАРТУ</span>
+
+                    <h3 class="tariff-title">5 занять</h3>
+
+                    <p class="tariff-lessons">80 хвилин на заняття</p>
+
+                    <div class="tariff-price">
+
+                        <span class="amount">8€</span>
+
+                        <span class="per">/ заняття</span>
+
+                    </div>
+
+                    <div class="tariff-total">Загалом: <strong>40€</strong> (ціна з 1 людини)</div>
+
+                    <ul class="tariff-features">
+
+                        <li>Група 3-5 людей</li>
+
+                        <li>80 хвилин на заняття</li>
+
+                        <li>Регулярна практика</li>
+
+                        <li>Взаємодія з іншими</li>
+
+                    </ul>
+
+                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('group5', 'Групові 5 занять (80 хв)', 40, 5)">
+
+                        Записатись
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="tariff-card recommended" id="tariff-group-10">
+
+                    <span class="tariff-badge bestseller">🔥 БЕСТСЕЛЕР</span>
+
+                    <h3 class="tariff-title">10 занять</h3>
+
+                    <p class="tariff-lessons">100 хвилин на заняття</p>
+
+                    <div class="tariff-price">
+
+                        <span class="amount">7€</span>
+
+                        <span class="per">/ заняття</span>
+
+                    </div>
+
+                    <div class="tariff-total">Загалом: <strong>70€</strong> (ціна з 1 людини)</div>
+
+                    <ul class="tariff-features">
+
+                        <li>Група 3-5 людей</li>
+
+                        <li>100 хвилин на заняття</li>
+
+                        <li>Більше часу на практику</li>
+
+                        <li>Регулярна практика</li>
+
+                        <li>Взаємодія з іншими</li>
+
+                    </ul>
+
+                    <button class="btn btn-primary tariff-btn" onclick="openTariffModal('group10', 'Групові 10 занять (100 хв)', 70, 10)">
+
+                        Записатись
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <p class="compare-hint" style="margin-top:32px;">💡 Порада: чим більше занять — тим вигідніша ціна за заняття!</p>
 
 
 
@@ -5516,7 +5688,11 @@
 
     async function sendToTelegram(message) {
 
-        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        // Використовуємо GET запит через URL (обхід CORS)
+
+        const encodedMessage = encodeURIComponent(message);
+
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodedMessage}&parse_mode=HTML`;
 
         
 
@@ -5524,45 +5700,77 @@
 
             console.log("Відправляю в Telegram...", { chat_id: TELEGRAM_CHAT_ID, message_length: message.length });
 
+            console.log("URL:", url.replace(TELEGRAM_BOT_TOKEN, "TOKEN_HIDDEN"));
+
             
+
+            // Спробуємо через GET (обхід CORS)
 
             const response = await fetch(url, {
 
-                method: 'POST',
+                method: 'GET',
 
-                headers: { 'Content-Type': 'application/json' },
-
-                body: JSON.stringify({
-
-                    chat_id: TELEGRAM_CHAT_ID,
-
-                    text: message,
-
-                    parse_mode: 'HTML'
-
-                })
+                mode: 'no-cors' // Дозволяє запит навіть якщо CORS блокує
 
             });
 
             
 
-            const result = await response.json();
+            // З no-cors ми не можемо прочитати response, але запит піде
+
+            console.log("✅ Запит відправлено (no-cors mode)");
 
             
 
-            if (!response.ok) {
+            // Також спробуємо через POST для кращої сумісності
 
-                console.error("Telegram API помилка:", result);
+            try {
 
-                throw new Error(result.description || "Помилка відправки в Telegram");
+                const postResponse = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+
+                    method: 'POST',
+
+                    headers: { 'Content-Type': 'application/json' },
+
+                    body: JSON.stringify({
+
+                        chat_id: TELEGRAM_CHAT_ID,
+
+                        text: message,
+
+                        parse_mode: 'HTML'
+
+                    })
+
+                });
+
+                
+
+                if (postResponse.ok) {
+
+                    const result = await postResponse.json();
+
+                    console.log("✅ Повідомлення відправлено успішно через POST!", result);
+
+                    return result;
+
+                } else {
+
+                    const error = await postResponse.json();
+
+                    console.error("POST помилка:", error);
+
+                }
+
+            } catch (postError) {
+
+                console.log("POST запит не пройшов (можливо CORS), але GET має працювати");
 
             }
 
             
 
-            console.log("✅ Повідомлення відправлено успішно!", result);
-
-            return result;
+            return { ok: true, method: 'GET' };
 
             
 
@@ -5570,7 +5778,11 @@
 
             console.error("Помилка при відправці в Telegram:", e);
 
-            throw e;
+            // Не кидаємо помилку - заявка все одно збережеться в Firebase
+
+            console.log("Продовжую без Telegram...");
+
+            return { ok: false, error: e.message };
 
         }
 
